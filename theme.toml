@@ -1,31 +1,19 @@
-name = 'Theme name'
+name = 'Koralyte'
 license = 'MIT'
-licenselink = 'https://github.com/owner/repo/LICENSE'
-description = 'Theme description'
+licenselink = 'https://github.com/ragibson/koralyte/blob/main/LICENSE'
+description = 'An elegant, minimalist Hugo theme for creating clean websites and blogs.'
 
 # The home page of the theme, where the source can be found
-homepage = 'https://github.com/owner/repo'
+homepage = 'https://github.com/ragibson/koralyte'
 
-# If you have a running demo of the theme
-demosite = 'https://owner.github.io/repo'
+# A running demo of the theme
+# demosite = 'https://owner.github.io/repo'
 
 # Taxonomy terms
-tags = ['blog', 'company']
-features = ['some', 'awesome', 'features']
-
-# If the theme has multiple authors
-authors = [
-  {name = 'Name of author', homepage = 'Website of author'},
-  {name = 'Name of author', homepage = 'Website of author'}
-]
+tags = ["blog", "personal", "minimal", "elegant", "responsive", "simple", "clean", "minimalist", "dark mode"]
+features = ["responsive", "blog", "table-of-contents", "social-icons", "code-blocks", "customization", "dark mode"]
 
 # If the theme has a single author
 [author]
-  name = 'Your name'
-  homepage = 'Your website'
-
-# If porting an existing theme
-[original]
-  author = 'Name of original author'
-  homepage = 'Website of original author'
-  repo = 'https://github.com/owner/repo'
+  name = 'Ryan Gibson'
+  homepage = 'https://ryanagibson.com'
