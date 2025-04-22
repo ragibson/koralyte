@@ -1,13 +1,13 @@
-name = 'Koralyte'
-license = 'MIT'
-licenselink = 'https://github.com/ragibson/koralyte/blob/main/LICENSE'
-description = 'An elegant, minimalist Hugo theme for creating clean websites and blogs.'
+name = "Koralyte"
+license = "MIT"
+licenselink = "https://github.com/ragibson/koralyte/blob/main/LICENSE"
+description = "An elegant, minimalist Hugo theme for creating clean websites and blogs."
 
-# The home page of the theme, where the source can be found
-homepage = 'https://github.com/ragibson/koralyte'
+# The home page of the theme, where the source can be found.
+homepage = "https://github.com/ragibson/koralyte"
 
-# A running demo of the theme
-# demosite = 'https://owner.github.io/repo'
+# If you have a running demo of the theme.
+# demosite = "https://gohugo.io"
 
 # Taxonomy terms
 tags = ["blog", "personal", "minimal", "elegant", "responsive", "simple", "clean", "minimalist", "dark mode"]
@@ -15,5 +15,5 @@ features = ["responsive", "blog", "table-of-contents", "social-icons", "code-blo
 
 # If the theme has a single author
 [author]
-  name = 'Ryan Gibson'
-  homepage = 'https://ryanagibson.com'
+    name = "Ryan Gibson"
+    homepage = "https://ryanagibson.com"
