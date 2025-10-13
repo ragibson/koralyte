@@ -7,7 +7,7 @@ as concerns rose over its broken functionality, declining code quality, and ques
 
 The aim of Koralyte is to be significantly simpler, with a stronger focus on clean code and maintainability.
 
-I will likely not be able to focus on this until at least mid-2025.
+I will likely not be able to focus on this until at least mid-2026.
 
 ## Features
 
