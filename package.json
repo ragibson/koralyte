@@ -57,7 +57,7 @@
     },
     {
       "from": "node_modules/fuse.js/dist/fuse.min.cjs",
-      "to": "assets/lib/fuse/fuse.min.js"
+      "to": "assets/lib/fuse/fuse.min.cjs"
     },
     {
       "from": "node_modules/lite-youtube-embed/src/lite-yt-embed.js",

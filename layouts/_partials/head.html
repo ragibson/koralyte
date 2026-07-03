@@ -94,7 +94,9 @@
     {{ $jsResources = $jsResources | append (resources.Get "js/scroll-to-top.js") }}
   {{ end }}
   {{ if site.Params.enableSearch | default false }}
-    {{ $jsResources = $jsResources | append (resources.Get "lib/fuse/fuse.min.js") | append (resources.Get "js/search.js") }}
+    {{ $fuseRaw := resources.Get "lib/fuse/fuse.min.cjs" }}
+    {{ $fuse := resources.FromString "lib/fuse/fuse.min.js" (replace $fuseRaw.Content "module.exports=" "window.Fuse=") }}
+    {{ $jsResources = $jsResources | append $fuse | append (resources.Get "js/search.js") }}
   {{ end }}
   {{ if site.Params.enableCodeCopy | default false }}
     {{ $jsResources = $jsResources | append (resources.Get "js/code.js") }}
