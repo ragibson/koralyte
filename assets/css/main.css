@@ -66,6 +66,24 @@ button,
   @apply mt-3;
 }
 
+/* Extend default width of pages from 65ch to 88ch */
+.max-w-prose {
+  max-width: 88ch;
+}
+
+/* Allow a smaller width for images */
+.max-w-65ch {
+  max-width: 65ch;
+  width: 100%;
+}
+
+/* Center figure by adjusting left and right margins */
+.center-figure,
+.center-figure > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Table of Contents */
 #TOCView {
   max-height: calc(100vh - 150px);
