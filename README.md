@@ -1,16 +1,61 @@
 # koralyte
 
-An elegant, minimalist Hugo theme for creating clean websites and blogs.
+An elegant, minimalist Hugo theme for creating clean websites and blogs. It is designed to be simple and have a strong
+focus on clean code and maintainability.
 
-This theme was visually inspired by the Blowfish Hugo theme, which is itself a fork of Congo. I migrated off of Blowfish
-as concerns rose over its broken functionality, declining code quality, and questionable content practices.
-
-The aim of Koralyte is to be significantly simpler, with a stronger focus on clean code and maintainability.
-
-I will likely not be able to focus on this until at least mid-2026.
+This theme was visually inspired by the Blowfish Hugo theme, which is itself a fork of Congo. I migrated away from
+Blowfish as concerns rose over its broken functionality, declining code quality, and questionable content practices.
 
 ## Features
 
+* Dark/light mode with system preference detection
+* Client-side search
+* Tailwind CSS v4
+* Smart scrolling table of contents
+* Code blocks with copy buttons
+* Responsive figures with click-to-zoom
+* KaTeX math rendering
+* Google Analytics support
+
+## Requirements
+
+* Hugo extended v0.146.0+
+* Node.js 22+ (only if you need to rebuild CSS)
+
 ## Installation
 
+### Option 1 - Git submodule
+
+```bash
+git submodule add https://github.com/ragibson/koralyte.git themes/koralyte --depth 1
+echo 'theme = "koralyte"' >> hugo.toml
+```
+
+### Option 2 - Hugo module
+
+```bash
+hugo mod init github.com/ragibson/koralyte
+```
+
+Then set the theme in `hugo.toml` and fetch the module.
+
+```toml
+[[module.imports]]
+path = "github.com/ragibson/koralyte"
+```
+
+```bash
+hugo mod get github.com/ragibson/koralyte
+hugo server
+```
+
 ## Configuration
+
+The default configuration is provided in `hugo.toml`. Override it in your site's `config/_default/params.toml`.
+
+See [CONFIGURATION.md](CONFIGURATION.md) for a complete reference of the theme's configuration options.
+
+## Development
+
+The repository contains everything needed to build the theme. If you need to rebuild CSS or work on the theme itself,
+see [MAINTAINING.md](MAINTAINING.md).
