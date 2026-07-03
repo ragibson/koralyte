@@ -1,8 +1,8 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  <h1>{{ .Title | emojify }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle | emojify }}</a></h2>
     {{ .Summary }}
   {{ end }}
 {{ end }}

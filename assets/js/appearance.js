@@ -26,7 +26,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const switcher = document.getElementById("appearance-switcher");
   const switcherMobile = document.getElementById("appearance-switcher-mobile");
 
+  const darkLabel = '{{ i18n "footer.dark_appearance" }}';
+  const lightLabel = '{{ i18n "footer.light_appearance" }}';
+
   updateMeta();
+
+  const updateTooltip = (targetAppearance) => {
+    const label = targetAppearance === "dark" ? lightLabel : darkLabel;
+    if (switcher) {
+      switcher.setAttribute("aria-label", label);
+      switcher.setAttribute("title", label);
+    }
+    if (switcherMobile) {
+      switcherMobile.setAttribute("aria-label", label);
+      switcherMobile.setAttribute("title", label);
+    }
+  };
+
+  updateTooltip(getTargetAppearance());
 
   if (switcher) {
     switcher.addEventListener("click", () => {
@@ -37,6 +54,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         targetAppearance
       );
       updateMeta();
+      updateTooltip(targetAppearance);
     });
     switcher.addEventListener("contextmenu", (event) => {
       event.preventDefault();
@@ -52,6 +70,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         targetAppearance
       );
       updateMeta();
+      updateTooltip(targetAppearance);
     });
     switcherMobile.addEventListener("contextmenu", (event) => {
       event.preventDefault();

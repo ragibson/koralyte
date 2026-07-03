@@ -16,7 +16,7 @@
     "headline" .Title
     "url" .Permalink
     "author" (dict "@type" "Person" "name" site.Params.Author.name)
-    "mainEntityOfPage" true
+    "mainEntityOfPage" .Permalink
     "wordCount" .WordCount
   }}
   {{ with site.GetPage .Section }}{{ $schema = merge $schema (dict "articleSection" .Title) }}{{ end }}
