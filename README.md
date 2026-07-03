@@ -1,4 +1,4 @@
-# koralyte
+# Koralyte
 
 An elegant, minimalist Hugo theme for creating clean websites and blogs. It is designed to be simple and have a strong
 focus on clean code and maintainability.
@@ -15,7 +15,10 @@ Blowfish as concerns rose over its broken functionality, declining code quality,
 * Code blocks with copy buttons
 * Responsive figures with click-to-zoom
 * KaTeX math rendering
+* YouTube video embeds
 * Google Analytics support
+
+See [docs/shortcodes.md](docs/shortcodes.md) for a list of available shortcodes.
 
 ## Requirements
 
@@ -54,9 +57,9 @@ hugo server
 The default configuration is provided in [hugo.toml](hugo.toml). Override it in your site's
 `config/_default/params.toml`.
 
-See [CONFIGURATION.md](CONFIGURATION.md) for a complete reference of the theme's configuration options.
+See [docs/configuration.md](docs/configuration.md) for a complete reference of the theme's configuration options.
 
 ## Development
 
 The repository contains everything needed to build the theme. If you need to rebuild CSS or work on the theme itself,
-see [MAINTAINING.md](MAINTAINING.md).
+see [docs/maintaining.md](docs/maintaining.md).

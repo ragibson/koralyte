@@ -1,6 +1,6 @@
 # Koralyte configuration settings
 
-The default configuration is provided in [hugo.toml](hugo.toml). Override it in your site's
+The default configuration is provided in [hugo.toml](../hugo.toml). Override it in your site's
 `config/_default/params.toml`.
 
 A description of most options is provided below.
