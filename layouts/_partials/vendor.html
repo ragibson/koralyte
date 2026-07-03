@@ -33,4 +33,8 @@
     src="{{ $katexJS.RelPermalink }}"
     integrity="{{ $katexJS.Data.Integrity }}"
     id="katex-render"></script>
+  {{ $katexFonts := resources.Match "lib/katex/fonts/*" }}
+  {{ range $katexFonts }}
+    <!-- {{ .RelPermalink }} -->
+  {{ end }}
 {{ end }}
