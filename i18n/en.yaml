@@ -1,0 +1,47 @@
+article:
+  anchor_label: "Anchor"
+  date: "{{ .Date }}"
+  date_updated: "Updated: {{ .Date }}"
+  draft: "Draft"
+  reading_time:
+    one: "{{ .Count }} min"
+    other: "{{ .Count }} mins"
+  reading_time_title: "Reading time"
+  table_of_contents: "Table of Contents"
+  related_articles: "Related"
+
+author:
+  byline_title: "Author"
+
+code:
+  copy: "Copy"
+  copied: "Copied"
+
+error:
+  404_title: "Page Not Found :confused:"
+  404_error: "Error 404"
+  404_description: "It seems that the page you've requested does not exist."
+
+footer:
+  powered_by: "Powered by {{ .Hugo }} &amp; {{ .Theme }}"
+
+list:
+  no_articles: "There are no articles to list here yet."
+
+nav:
+  scroll_to_top_title: "Scroll to top"
+  skip_to_main: "Skip to main content"
+
+search:
+  open_button_title: "Search (/)"
+  close_button_title: "Close (Esc)"
+  input_placeholder: "Search"
+
+shortcode:
+  recent_articles: "Recent"
+
+recent:
+  show_more: "Show More"
+
+term:
+  no_articles: "There are no articles to list here yet."

@@ -1,17 +1,36 @@
-<!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-<head>
-  {{ partial "head.html" . }}
-</head>
-<body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
-</body>
+{{- $autoSwitchAppearance := partial "functions/param.html" (dict "params" site.Params "key" "autoSwitchAppearance" "default" true) -}}
+{{- $enableStyledScrollbar := partial "functions/param.html" (dict "params" site.Params "key" "enableStyledScrollbar" "default" true) -}}
+{{- $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) -}}
+<!doctype html>
+<html
+  lang="{{ site.Language.Locale | default `en` }}"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="{{ site.Params.defaultAppearance | default `light` }}"
+  data-auto-appearance="{{ $autoSwitchAppearance }}">
+  {{- partial "head.html" . -}}
+
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral{{ if $enableStyledScrollbar }} bf-scrollbar{{ end }}">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        {{ i18n "nav.skip_to_main" }}
+      </a>
+    </div>
+    {{ partialCached "header/basic.html" . "header" }}
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        {{ block "main" . }}{{ end }}
+        {{ if $showScrollToTop }}
+          {{- partialCached "scroll-to-top.html" . "scroll-to-top" -}}
+        {{ end }}
+      </main>
+      {{- partialCached "footer.html" . "footer" -}}
+      {{ if site.Params.enableSearch | default false }}
+        {{- partialCached "search.html" . "search" -}}
+      {{ end }}
+    </div>
+  </body>
 </html>

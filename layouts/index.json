@@ -1,0 +1,24 @@
+{{- $index := slice -}}
+{{ $pages := site.Pages }}
+{{ range site.Home.Translations }}
+{{ $pages = $pages | lang.Merge site.Pages }}
+{{ end }}
+{{- range $pages -}}
+  {{- if not .Params.excludeFromSearch -}}
+    {{- $section := site.GetPage "section" .Section -}}
+    {{- $entry := dict
+      "title" (.Title | emojify | safeJS)
+      "section" ($section.Title | emojify | safeJS)
+      "summary" (.Summary | plainify | htmlUnescape | safeJS)
+      "content" (.Plain | safeJS)
+      "permalink" .RelPermalink
+      "externalUrl" .Params.externalUrl
+      "type" .Type
+    -}}
+    {{- if .Date -}}
+      {{- $entry = merge $entry (dict "date" (.Date | time.Format (site.Language.Params.dateFormat | default ":date_long"))) -}}
+    {{- end -}}
+    {{- $index = $index | append $entry -}}
+  {{- end -}}
+{{- end -}}
+{{- $index | jsonify -}}

@@ -1,0 +1,81 @@
+{
+  "name": "koralyte",
+  "version": "1.0.0",
+  "description": "Koralyte — an elegant, minimalist Hugo theme built with Tailwind CSS.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "postinstall": "vendor-copy",
+    "assets": "rm -rf assets/lib && vendor-copy",
+    "dev": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
+    "build": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ragibson/koralyte.git"
+  },
+  "keywords": [
+    "hugo",
+    "hugo-theme",
+    "tailwind",
+    "dark-mode"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ragibson/koralyte/issues"
+  },
+  "homepage": "https://github.com/ragibson/koralyte#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "fuse.js": "~7.2.0",
+    "katex": "^0.16.45",
+    "lite-youtube-embed": "^0.3.4",
+    "medium-zoom": "^1.1.0",
+    
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^4.2.2",
+    "vendor-copy": "^3.0.1"
+  },
+  "vendorCopy": [],
+  "devVendorCopy": [
+    {
+      "from": "node_modules/katex/dist/katex.min.js",
+      "to": "assets/lib/katex/katex.min.js"
+    },
+    {
+      "from": "node_modules/katex/dist/katex.min.css",
+      "to": "assets/lib/katex/katex.min.css"
+    },
+    {
+      "from": "node_modules/katex/dist/contrib/auto-render.min.js",
+      "to": "assets/lib/katex/auto-render.min.js"
+    },
+    {
+      "from": "node_modules/katex/dist/fonts/",
+      "to": "assets/lib/katex/fonts/"
+    },
+    {
+      "from": "node_modules/fuse.js/dist/fuse.min.js",
+      "to": "assets/lib/fuse/fuse.min.js"
+    },
+    {
+      "from": "node_modules/lite-youtube-embed/src/lite-yt-embed.js",
+      "to": "assets/lib/lite-youtube-embed/lite-yt-embed.js"
+    },
+    {
+      "from": "node_modules/lite-youtube-embed/src/lite-yt-embed.css",
+      "to": "assets/lib/lite-youtube-embed/lite-yt-embed.css"
+    },
+    {
+      "from": "node_modules/medium-zoom/dist/pure/medium-zoom.min.umd.js",
+      "to": "assets/lib/zoom/zoom.min.umd.js"
+    },
+    {
+      "from": "node_modules/medium-zoom/dist/style.css",
+      "to": "assets/lib/zoom/style.css"
+    }
+  ]
+}

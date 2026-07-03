@@ -1,0 +1,48 @@
+{{/* context can be a page or a dict with "context" and optional "scope" keys */}}
+{{ $page := . }}
+{{ $scope := "" }}
+{{ if reflect.IsMap . }}
+  {{ $page = .context }}
+  {{ with .scope }}{{ $scope = . }}{{ end }}
+{{ end }}
+
+{{ with $page }}
+  <div class="flex flex-row flex-wrap items-center">
+    {{ $parts := slice }}
+    {{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
+    {{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
+    {{ if $showDate }}
+      {{ $parts = $parts | append (partial "meta/date.html" .Date) }}
+    {{ end }}
+    {{ $showDateUpdated := partial "functions/param.html" (dict "params" site.Params.article "key" "showDateUpdated" "default" false) }}
+    {{ $showDateUpdated = partial "functions/param.html" (dict "params" .Params "key" "showDateUpdated" "default" $showDateUpdated) }}
+    {{ if and $showDateUpdated (ne (partial
+      "functions/date.html" .Date) (partial "functions/date.html" .Lastmod)) (gt (.Lastmod | time.Format "2006") 1)
+    }}
+      {{ $parts = $parts | append (partial "meta/date-updated.html" .Lastmod) }}
+    {{ end }}
+    {{ $showReadingTime := partial "functions/param.html" (dict "params" site.Params.article "key" "showReadingTime" "default" true) }}
+    {{ $showReadingTime = partial "functions/param.html" (dict "params" .Params "key" "showReadingTime" "default" $showReadingTime) }}
+    {{ if and $showReadingTime (ne .ReadingTime 0) }}
+      {{ $parts = $parts | append (partial "meta/reading-time.html" .) }}
+    {{ end }}
+    {{ if $parts }}
+      {{ delimit $parts "<span class=\"px-2 text-primary-500\">&middot;</span>" | safeHTML }}
+    {{ end }}
+    {{ if and (eq $scope "single") .Draft site.Params.article.showDraftLabel }}
+      <span class="ps-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</span>
+    {{ end }}
+  </div>
+
+  {{ $showTaxonomies := partial "functions/param.html" (dict "params" site.Params.article "key" "showTaxonomies" "default" false) }}
+  {{ $showTaxonomies = partial "functions/param.html" (dict "params" .Params "key" "showTaxonomies" "default" $showTaxonomies) }}
+  {{ if $showTaxonomies }}
+    <div class="flex flex-row flex-wrap items-center">
+      {{ range .GetTerms "tags" }}
+        <a class="relative mt-[0.5rem] me-2" href="{{ .RelPermalink }}">
+          {{ partial "badge.html" .LinkTitle }}
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

@@ -1,0 +1,15 @@
+<div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  {{ if not (site.Params.disableTextInHeader | default false) }}
+    <a href="{{ "" | relLangURL }}" class="text-base font-medium truncate min-w-0 shrink">
+      {{ site.Title | markdownify }}
+    </a>
+  {{ end }}
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      {{ partial "header/components/desktop-menu.html" . }}
+    </div>
+    <div class="flex md:hidden">
+      {{ partial "header/components/mobile-menu.html" . }}
+    </div>
+  </div>
+</div>

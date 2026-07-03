@@ -1,0 +1,35 @@
+{{/* Returns the featured image URL for a page, or empty string if none.
+  Called with the page context (.) or a dict with a "page" key.
+  Respects .Params.hideFeatureImage and $disableImageOptimization.
+*/}}
+{{ $page := . }}
+{{ if reflect.IsMap . }}
+  {{ $page = .page }}
+{{ end }}
+{{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
+{{ $featuredURL := "" }}
+
+{{ if not $page.Params.hideFeatureImage }}
+  {{ $featured := "" }}
+  {{ with $page.Params.featureimage }}
+    {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+      {{ $featured = resources.GetRemote . }}
+    {{ else }}
+      {{ $featured = resources.Get . }}
+    {{ end }}
+  {{ end }}
+  {{ if not $featured }}
+    {{ $images := $page.Resources.ByType "image" }}
+    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ with $featured }}
+    {{ $featuredURL = .RelPermalink }}
+    {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
+      {{ $featuredURL = (.Resize "600x").RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $featuredURL }}

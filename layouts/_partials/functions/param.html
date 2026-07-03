@@ -1,0 +1,8 @@
+{{- $value := .default -}}
+{{- with .params -}}
+  {{- $key := lower $.key -}}
+  {{- if isset . $key -}}
+    {{- $value = index . $key -}}
+  {{- end -}}
+{{- end -}}
+{{- return $value -}}

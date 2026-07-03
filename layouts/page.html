@@ -1,0 +1,42 @@
+{{ define "main" }}
+  <article>
+    <header id="single_header" class="mt-5 max-w-prose">
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        {{ .Title | emojify }}
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+      </div>
+      {{ $showAuthor := partial "functions/param.html" (dict "params" site.Params.article "key" "showAuthor" "default" true) }}
+      {{ $showAuthor = partial "functions/param.html" (dict "params" .Params "key" "showAuthor" "default" $showAuthor) }}
+      {{ if $showAuthor }}
+        {{ partial "author.html" . }}
+        <div class="mb-5"></div>
+      {{ end }}
+    </header>
+
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      {{ $showTocParam := partial "functions/param.html" (dict "params" site.Params.article "key" "showTableOfContents" "default" false) }}
+      {{ $showTocParam = partial "functions/param.html" (dict "params" .Params "key" "showTableOfContents" "default" $showTocParam) }}
+      {{ $showToc := and $showTocParam (in .TableOfContents "<ul") }}
+      {{ if $showToc }}
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            {{ partial "toc.html" . }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        <div class="article-content max-w-prose mb-20">
+          {{ .Content }}
+        </div>
+        {{ partial "related.html" . }}
+      </div>
+    </section>
+
+    <footer class="pt-8 max-w-prose print:hidden">
+      {{ partial "article-pagination.html" . }}
+    </footer>
+  </article>
+{{ end }}
