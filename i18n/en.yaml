@@ -24,6 +24,8 @@ error:
 
 footer:
   powered_by: "Powered by {{ .Hugo }} &amp; {{ .Theme }}"
+  dark_appearance: "Dark mode switcher"
+  light_appearance: "Light mode switcher"
 
 list:
   no_articles: "There are no articles to list here yet."

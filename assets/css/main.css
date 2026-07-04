@@ -189,6 +189,7 @@ pre {
   min-height: 180px;
 }
 
+/* TODO: consider a redesign, this could look bad on extremely thin devices */
 @variant max-md {
   .thumbnail {
     width: 100%;
