@@ -3,8 +3,9 @@
 An elegant, minimalist Hugo theme for creating clean websites and blogs. It is designed to be simple and have a strong
 focus on clean code and maintainability.
 
-This theme was visually inspired by the Blowfish Hugo theme, which is itself a fork of Congo. I migrated away from
-Blowfish as concerns rose over its broken functionality, declining code quality, and questionable content practices.
+This theme was visually inspired by the Blowfish Hugo theme (which is itself a fork of Congo), but Koralyte is ~0.4% the
+size (~225x smaller) and produces smaller, faster pages. I migrated away from Blowfish as concerns rose over its broken
+functionality, declining code quality, and questionable content practices.
 
 ## Features
 
