@@ -7,6 +7,8 @@ This theme was visually inspired by the Blowfish Hugo theme (which is itself a f
 size (~225x smaller) and produces smaller, faster pages. I migrated away from Blowfish as concerns rose over its broken
 functionality, declining code quality, and questionable content practices.
 
+This theme powers my personal website: <https://ryanagibson.com/>.
+
 ## Features
 
 * Dark/light mode with system preference detection
