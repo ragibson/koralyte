@@ -174,15 +174,14 @@ pre {
   text-align: left;
 }
 
+/* TODO: consider making the thumbnail aspect ratios consistent across the site */
 .thumbnail_card {
   min-width: 300px;
-  aspect-ratio: var(--thumbnail-aspect-ratio, 1.5);
-  height: auto;
+  height: 200px;
 }
 
 .thumbnail_card_related {
-  aspect-ratio: var(--thumbnail-aspect-ratio, 1.5);
-  height: auto;
+  height: 150px;
 }
 
 .thumbnail {
