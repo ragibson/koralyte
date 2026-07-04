@@ -43,3 +43,26 @@ A lightweight YouTube embed that is significantly faster than the official `<ifr
 ```hugo
 {{< youtubeLite id="abcdefghijk" >}}
 ```
+
+## details
+
+A collapsible `<details>` element. The `title` parameter sets the summary Markdown text (defaults to "Click to expand").
+
+```hugo
+{{< details title="Click to see details" >}}
+Here is some **Markdown** content.
+{{< /details >}}
+```
+
+## rawhtml
+
+Renders inner content as raw HTML without Markdown processing. Useful for embedding custom HTML that Hugo would
+otherwise escape.
+
+```hugo
+{{< rawhtml >}}
+<div class="custom-class">
+  <p>Raw HTML content here.</p>
+</div>
+{{< /rawhtml >}}
+```
