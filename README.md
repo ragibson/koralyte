@@ -30,7 +30,7 @@ See [docs/shortcodes.md](docs/shortcodes.md) for a list of available shortcodes.
 ### Option 1 - Git submodule
 
 ```bash
-git submodule add https://github.com/ragibson/koralyte.git themes/koralyte --depth 1
+git submodule add --depth 1 https://github.com/ragibson/koralyte.git themes/koralyte
 echo 'theme = "koralyte"' >> hugo.toml
 ```
 

@@ -57,6 +57,7 @@ A description of most options is provided below.
 | `showPagination`          | `true`  |
 | `invertPagination`        | `false` |
 | `showReadingTime`         | `true`  |
+| `readingSpeed`            | `200`   |
 | `showTableOfContents`     | `false` |
 | `showTaxonomies`          | `false` |
 | `showRelatedContent`      | `false` |

@@ -1,4 +1,7 @@
+{{ $readingTime := div (float .WordCount) (int .Site.Params.article.readingSpeed) }}
+{{ $readingTime = int (math.Ceil $readingTime) }}
+
 <span title="{{ i18n "article.reading_time_title" }}">
-  {{- i18n "article.reading_time" .ReadingTime | markdownify | emojify -}}
+  {{- i18n "article.reading_time" (dict "Count" $readingTime) | markdownify | emojify -}}
 </span>
 {{- /* Trim EOF */ -}}
