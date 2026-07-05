@@ -76,15 +76,12 @@
     href="{{ $bundleCSS.RelPermalink }}"
     integrity="{{ $bundleCSS.Data.Integrity }}">
 
-  {{/* JS loaded immediately */}}
-  {{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify | resources.Fingerprint $alg }}
-  <script
-    type="text/javascript"
-    src="{{ $jsAppearance.RelPermalink }}"
-    integrity="{{ $jsAppearance.Data.Integrity }}"></script>
+  {{/* Inlined JS to avoid render-blocking request. This must run before paint for dark mode */}}
+  {{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify }}
+  <script>{{ $jsAppearance.Content | safeJS }}</script>
   {{ if not $disableImageZoom }}
     {{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Fingerprint $alg }}
-    <script src="{{ $zoomJS.RelPermalink }}" integrity="{{ $zoomJS.Data.Integrity }}"></script>
+    <script defer src="{{ $zoomJS.RelPermalink }}" integrity="{{ $zoomJS.Data.Integrity }}"></script>
   {{ end }}
 
   {{/* JS deferred */}}
