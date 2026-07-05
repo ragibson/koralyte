@@ -64,6 +64,6 @@
     {{ end }}
   </div>
   {{ if not (site.Params.disableImageZoom | default false) }}
-    <script>document.addEventListener("DOMContentLoaded",function(){mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})})</script>
+    <script>document.addEventListener("DOMContentLoaded",function(){requestAnimationFrame(function(){mediumZoom(document.querySelectorAll("img:not(.nozoom)"),{margin:24,background:"rgba(0,0,0,0.5)",scrollOffset:0})})})</script>
   {{ end }}
 </footer>
