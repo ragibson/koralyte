@@ -79,9 +79,11 @@
   {{/* Inlined JS to avoid render-blocking request. This must run before paint for dark mode */}}
   {{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify }}
   <script>{{ $jsAppearance.Content | safeJS }}</script>
+
+  {{/* Inlined since deferring causes reflow issues. It is possible that a more sophisticated defer would work. */}}
   {{ if not $disableImageZoom }}
-    {{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Fingerprint $alg }}
-    <script defer src="{{ $zoomJS.RelPermalink }}" integrity="{{ $zoomJS.Data.Integrity }}"></script>
+    {{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Minify }}
+    <script>{{ $zoomJS.Content | safeJS }}</script>
   {{ end }}
 
   {{/* JS deferred */}}
