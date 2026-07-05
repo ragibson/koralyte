@@ -14,7 +14,7 @@ A description of most options is provided below.
 | `autoSwitchAppearance`          | `true`       | Follow OS dark mode preference, if provided by the browser.    |
 | `enableSearch`                  | `true`       | Enable client-side search bar.                                 |
 | `enableCodeCopy`                | `false`      | Enable copy buttons on code blocks.                            |
-| `disableImageOptimization`      | `false`      | Skip Hugo's build-time image processing.                       |
+| `disableImageOptimization`      | `true`       | Skip Hugo's build-time image processing.                       |
 | `disableImageZoom`              | `false`      | Disable zoom-to-click on images.                               |
 | `disableTextInHeader`           | `false`      | Hide site title text in page title (browswer tab).             |
 | `enableStyledScrollbar`         | `true`       | Enable custom Tailwind scrollbar.                              |
