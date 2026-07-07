@@ -27,6 +27,7 @@ See [docs/shortcodes.md](docs/shortcodes.md) for a list of available shortcodes.
 
 * Hugo extended v0.146.0+
 * Node.js 22+ (only if you need to rebuild CSS)
+* pnpm 11+ (only if you need to rebuild CSS)
 
 ## Installation
 

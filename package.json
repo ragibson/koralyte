@@ -1,15 +1,18 @@
 {
   "name": "koralyte",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Koralyte - an elegant, minimalist Hugo theme for creating clean websites and blogs.",
+  "packageManager": "pnpm@11.10.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=22",
+    "npm": "please-use-pnpm",
+    "pnpm": ">=11"
   },
   "scripts": {
     "postinstall": "node scripts/vendor-copy.js",
     "assets": "rm -rf assets/lib && node scripts/vendor-copy.js",
-    "dev": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
-    "build": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify"
+    "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
+    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify"
   },
   "repository": {
     "type": "git",

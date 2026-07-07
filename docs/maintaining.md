@@ -4,14 +4,15 @@
 
 * Hugo Extended v0.146.0+
 * Node.js 22+
+* pnpm 11+
 * Go 1.22+
 
 ## Rebuild process
 
 ```
-npm install     # updates node_modules and package-lock.json
-npm run assets  # wipes assets/lib and copies vendor packages to assets/lib
-npm run build   # rebuild minified CSS
+pnpm install    # updates node_modules and pnpm-lock.yaml
+pnpm assets     # wipes assets/lib and copies vendor packages to assets/lib
+pnpm build      # rebuild minified CSS
 ```
 
 ## Adding a shortcode
@@ -63,13 +64,11 @@ hugo mod get github.com/ragibson/koralyte@v1.0.0
 
 ## Security
 
-In general, we'd like to keep dependencies to a minimum (and possibly move to a safer alternative than npm). In the
-meantime, it's best to audit the dependencies periodically.
+In general, we'd like to keep dependencies to a minimum. It's also best to audit the dependencies periodically.
 
 ```
-npm audit
-npm audit fix          # apply "safe" fixes
-npm audit fix --force  # fixes that allow major version bumps
+pnpm audit
+pnpm audit --fix
 ```
 
 ## Directory layout
@@ -101,5 +100,5 @@ koralyte/
 ├── hugo.toml              # theme defaults
 ├── theme.toml             # Hugo theme metadata
 ├── tailwind.config.js     # Tailwind v4 config (uses @config shim)
-└── package.json           # npm scripts and setup
+└── package.json           # pnpm scripts and setup
 ```
