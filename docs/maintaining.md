@@ -71,6 +71,20 @@ pnpm audit
 pnpm audit --fix
 ```
 
+## GitHub Actions
+
+There are two GitHub actions containing four tests.
+
+* `build.yaml` ensures that the theme builds properly on a simple, mock site. This is repeated for the minimum Hugo
+  version in `hugo.toml` and the latest one.
+* `generated-files.yaml`'s `css-up-to-date` job recompiles the theme's CSS and ensures it matches what has been
+  committed to the theme.
+* `generated-files.yaml`'s `vendor-up-to-date` job similarly ensures that the theme's committed vendor files are up to
+  date.
+
+The minimum Hugo version is declared in `hugo.toml`. When updating it, also update the version in `build.yaml`'s matrix
+and the requirements section of this document and `README.md`.
+
 ## Directory layout
 
 The purpose of the larger theme directories are below.

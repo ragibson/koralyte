@@ -1,0 +1,29 @@
+name: Build test
+
+on: [ push, pull_request ]
+
+jobs:
+  hugo-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hugo-version: [ '0.146.0', 'latest' ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm assets
+      - run: pnpm build
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ matrix.hugo-version }}
+          extended: true
+      - run: |
+          hugo new site testsite --format=toml
+          ln -s "$GITHUB_WORKSPACE" testsite/themes/koralyte
+          echo 'theme = "koralyte"' >> testsite/hugo.toml
+      - run: hugo --minify
+        working-directory: testsite

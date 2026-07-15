@@ -1,0 +1,28 @@
+name: Generated files up to date
+
+on: [ push, pull_request ]
+
+jobs:
+  css-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: git diff --exit-code -- assets/css/compiled/main.css
+
+  vendor-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm assets
+      - run: git diff --exit-code -- assets/lib
