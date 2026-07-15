@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Hugo Extended v0.146.0+
+* Hugo Extended v0.158.0+
 * Node.js 22+
 * pnpm 11+
 * Go 1.22+
