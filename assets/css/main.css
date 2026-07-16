@@ -3,7 +3,8 @@
 @config "../../tailwind.config.js";
 
 @import "tailwindcss";
-@import "./components/chroma.css" layer(utilities);
+@import "../lib/chroma/chroma.css" layer(utilities);
+@import "./components/chroma-layout.css" layer(utilities);
 
 html:not(.dark) {
   color-scheme: light;

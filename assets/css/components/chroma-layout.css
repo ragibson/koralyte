@@ -1,0 +1,50 @@
+/* -- Chroma Highlight -- */
+/* margins for codeblock title */
+.highlight-wrapper {
+  @apply relative z-0 block overflow-hidden rounded-md shadow;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+}
+
+.highlight-wrapper pre,
+.highlight-wrapper table,
+.highlight-wrapper div {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.highlight-wrapper:has(.codeblock-title) pre {
+  @apply rounded-none;
+}
+
+.codeblock-title {
+  @apply border-b border-neutral-200 px-4 py-2 dark:border-neutral-800;
+  @apply bg-white dark:bg-[#0d1117];
+}
+
+/* LineTableTD */
+.chroma .lntd,
+.chroma .lntd pre {
+  @apply m-0 border-none p-0 align-top;
+}
+
+/* LineTable */
+.chroma .lntable {
+  @apply block w-auto overflow-hidden px-4 py-3 text-base;
+  border-spacing: 0;
+}
+
+/* LineHighlight */
+.chroma .hl {
+  @apply -mx-4 block w-auto px-4;
+}
+
+.chroma .lntd .hl {
+  @apply m-0 p-0;
+}
+
+/* linenos=inline */
+.chroma:not(:is(table *)) > code {
+  display: block;
+  min-width: max-content;
+}

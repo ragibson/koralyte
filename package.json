@@ -10,7 +10,7 @@
   },
   "scripts": {
     "postinstall": "node scripts/vendor-copy.js",
-    "assets": "rm -rf assets/lib && node scripts/vendor-copy.js",
+    "assets": "rm -rf assets/lib && node scripts/vendor-copy.js && node scripts/generate-chroma.js",
     "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
     "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify",
     "format": "prettier --write . && gotmplfmt -w layouts",
