@@ -15,12 +15,12 @@ jobs:
           node-version: 22
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - run: pnpm assets
-      - run: pnpm build
       - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: ${{ matrix.hugo-version }}
           extended: true
+      - run: pnpm assets
+      - run: pnpm build
       - run: |
           hugo new site testsite --format=toml
           ln -s "$GITHUB_WORKSPACE" testsite/themes/koralyte
