@@ -28,13 +28,13 @@ A description of most options is provided below.
 
 ## `[footer]`
 
-| Key                      | Default |
-| ------------------------ | ------- |
-| `showMenu`               | `true`  |
-| `showCopyright`          | `true`  |
-| `showThemeAttribution`   | `true`  |
-| `showAppearanceSwitcher` | `true`  |
-| `showScrollToTop`        | `true`  |
+| Key                      | Default | Description                            |
+| ------------------------ | ------- | -------------------------------------- |
+| `showMenu`               | `true`  | Show footer tags link.                 |
+| `showCopyright`          | `true`  | Show author copyright notice.          |
+| `showThemeAttribution`   | `true`  | Show "Hugo & theme" attribution.       |
+| `showAppearanceSwitcher` | `true`  | Show light/dark mode toggle in header. |
+| `showScrollToTop`        | `true`  | Show scroll-to-top button.             |
 
 ## `[homepage]`
 
@@ -47,41 +47,41 @@ A description of most options is provided below.
 
 ## `[article]`
 
-| Key                       | Default |
-| ------------------------- | ------- |
-| `showDate`                | `true`  |
-| `showDateUpdated`         | `false` |
-| `showAuthor`              | `true`  |
-| `showDraftLabel`          | `true`  |
-| `showHeadingAnchors`      | `true`  |
-| `showPagination`          | `true`  |
-| `invertPagination`        | `false` |
-| `showReadingTime`         | `true`  |
-| `readingSpeed`            | `200`   |
-| `showTableOfContents`     | `false` |
-| `showTaxonomies`          | `false` |
-| `showRelatedContent`      | `false` |
-| `relatedContentLimit`     | `3`     |
-| `externalLinkForceNewTab` | `true`  |
+| Key                       | Default | Description                                 |
+| ------------------------- | ------- | ------------------------------------------- |
+| `showDate`                | `true`  | Show publication date.                      |
+| `showDateUpdated`         | `false` | Show last-updated date.                     |
+| `showAuthor`              | `true`  | Show author info in article.                |
+| `showDraftLabel`          | `true`  | Show "Draft" badge on draft articles.       |
+| `showHeadingAnchors`      | `true`  | Show anchor links on headings.              |
+| `showPagination`          | `true`  | Show previous/next article links.           |
+| `invertPagination`        | `false` | Reverse previous/next order.                |
+| `showReadingTime`         | `true`  | Show estimated reading time.                |
+| `readingSpeed`            | `200`   | Words per minute for reading time estimate. |
+| `showTableOfContents`     | `false` | Show table of contents in articles.         |
+| `showTaxonomies`          | `false` | Show taxonomy terms (tags) in articles.     |
+| `showRelatedContent`      | `false` | Show related articles at end of post.       |
+| `relatedContentLimit`     | `3`     | Max number of related articles to show.     |
+| `externalLinkForceNewTab` | `true`  | Open external links in a new tab.           |
 
 ## `[list]`
 
-| Key           | Default |
-| ------------- | ------- |
-| `showSummary` | `false` |
-| `showCards`   | `false` |
+| Key           | Default | Description                         |
+| ------------- | ------- | ----------------------------------- |
+| `showSummary` | `false` | Show content summary in list views. |
+| `showCards`   | `false` | Display list items as cards.        |
 
 ## `[taxonomy]` / `[term]`
 
-| Key                      | Default |
-| ------------------------ | ------- |
-| `taxonomy.showTermCount` | `true`  |
+| Key                      | Default | Description                                     |
+| ------------------------ | ------- | ----------------------------------------------- |
+| `taxonomy.showTermCount` | `true`  | Show number of items per term in taxonomy list. |
 
 ## `[sitemap]`
 
-| Key             | Default                |
-| --------------- | ---------------------- |
-| `excludedKinds` | `["taxonomy", "term"]` |
+| Key             | Default                | Description                            |
+| --------------- | ---------------------- | -------------------------------------- |
+| `excludedKinds` | `["taxonomy", "term"]` | Content kinds to exclude from sitemap. |
 
 ## Author and social links
 
