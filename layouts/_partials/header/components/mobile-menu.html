@@ -80,14 +80,14 @@
 		</a>
 		{{/* gotmplfmt-ignore-end */}}
 
-	{{ if .HasChildren }}
-		<input checked type="checkbox" id="{{ $submenuId }}" autocomplete="off" class="hidden peer/full">
+		{{ if .HasChildren }}
+			<input checked type="checkbox" id="{{ $submenuId }}" autocomplete="off" class="hidden peer/full">
 
-		<div
-			class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 peer-checked/full:grid-rows-[1fr]">
-			<div class="overflow-hidden">
-				<div class="ms-7 mt-4">
-				{{ range .Children }}
+			<div
+				class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 peer-checked/full:grid-rows-[1fr]">
+				<div class="overflow-hidden">
+					<div class="ms-7 mt-4">
+						{{ range .Children }}
 					{{/* gotmplfmt-ignore-start */}}
 					<a
 						href="{{ .URL }}"
@@ -106,11 +106,11 @@
 						</span>
 					</a>
 					{{/* gotmplfmt-ignore-end */}}
-				{{ end }}
+						{{ end }}
+					</div>
 				</div>
 			</div>
-		</div>
-	{{ end }}
+		{{ end }}
 	</div>
 {{ end }}
 {{ end }}

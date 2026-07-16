@@ -46,17 +46,17 @@
 				</h2>
 			</a>
 			{{/* gotmplfmt-ignore-end */}}
-	{{ if and .Draft site.Params.article.showDraftLabel }}
-		<div class="ms-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</div>
-	{{ end }}
-</header>
-<div class="text-sm text-neutral-500 dark:text-neutral-400">
-	{{ partial "article-meta/basic.html" . }}
-</div>
-{{ if .Params.showSummary | default (site.Params.list.showSummary | default false) }}
-	<div class="article-link__summary prose dark:prose-invert max-w-fit mt-1 line-clamp-3">
-		{{ .Summary | plainify }}
+			{{ if and .Draft site.Params.article.showDraftLabel }}
+				<div class="ms-2">{{ partial "badge.html" (i18n "article.draft" | emojify) }}</div>
+			{{ end }}
+		</header>
+		<div class="text-sm text-neutral-500 dark:text-neutral-400">
+			{{ partial "article-meta/basic.html" . }}
+		</div>
+		{{ if .Params.showSummary | default (site.Params.list.showSummary | default false) }}
+			<div class="article-link__summary prose dark:prose-invert max-w-fit mt-1 line-clamp-3">
+				{{ .Summary | plainify }}
+			</div>
+		{{ end }}
 	</div>
-{{ end }}
-</div>
 </article>
