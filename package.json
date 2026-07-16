@@ -12,7 +12,9 @@
     "postinstall": "node scripts/vendor-copy.js",
     "assets": "rm -rf assets/lib && node scripts/vendor-copy.js",
     "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
-    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify"
+    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify",
+    "format": "prettier --write . && gotmplfmt -w layouts",
+    "format:check": "prettier --check . && gotmplfmt -l layouts | grep . && exit 1 || exit 0"
   },
   "repository": {
     "type": "git",
@@ -36,7 +38,9 @@
     "fuse.js": "^7.4.2",
     "katex": "^0.17.0",
     "lite-youtube-embed": "^0.3.4",
-    "medium-zoom": "^1.1.0"
+    "medium-zoom": "^1.1.0",
+    "prettier": "^3.9.5",
+    "prettier-plugin-tailwindcss": "^0.7.4"
   },
   "vendor": [
     {

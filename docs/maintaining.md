@@ -10,10 +10,29 @@
 ## Rebuild process
 
 ```
-pnpm install    # updates node_modules and pnpm-lock.yaml
-pnpm assets     # wipes assets/lib and copies vendor packages to assets/lib
-pnpm build      # rebuild minified CSS
+pnpm install       # updates node_modules and pnpm-lock.yaml
+pnpm assets        # wipes assets/lib and copies vendor packages to assets/lib
+pnpm build         # rebuild minified CSS
+pnpm format        # format all files
+pnpm format:check  # check formatting (for CI)
 ```
+
+## Code formatting
+
+Koralyte uses two formatters:
+
+- Prettier for JS, CSS, JSON, YAML, and Markdown.
+- gotmplfmt for Go/Hugo templates in `layouts/`.
+
+gotmplfmt is a standalong CLI, so it has to be installed separately.
+Install gotmplfmt (not managed via package.json/go.mod, since it's a standalone CLI):
+
+```bash
+go install github.com/gohugoio/gotmplfmt@latest
+```
+
+For now, gotmplfmt does not sort Tailwind classes inside `layouts/` (unlike `prettier-plugin-tailwindcss` in JS/CSS
+files), so we should try keeping class ordering in the templates reasonably consistent by hand.
 
 ## Adding a shortcode
 
