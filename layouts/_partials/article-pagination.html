@@ -1,55 +1,55 @@
 {{ $showPagination := partial "functions/param.html" (dict "params" site.Params.article "key" "showPagination" "default" true) }}
 {{ $showPagination = partial "functions/param.html" (dict "params" .Params "key" "showPagination" "default" $showPagination) }}
 {{ if $showPagination }}
-  {{ if or .NextInSection .PrevInSection }}
-    {{ $next := .NextInSection }}
-    {{ $prev := .PrevInSection }}
-    {{ $invertPagination := partial "functions/param.html" (dict "params" site.Params.article "key" "invertPagination" "default" false) }}
-    {{ $invertPagination = partial "functions/param.html" (dict "params" .Params "key" "invertPagination" "default" $invertPagination) }}
-    {{ if $invertPagination }}
-      {{ $next = .PrevInSection }}
-      {{ $prev = .NextInSection }}
-    {{ end }}
-    <div class="pt-8">
-      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
-      <div class="flex justify-between pt-3">
-        <span class="flex flex-col">
-          {{ if $prev }}
-            <a
-              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-              href="{{ $prev.RelPermalink }}">
-              <span class="leading-6">
-                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;{{ $prev.Title | emojify }}
-              </span>
-            </a>
-            {{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
-            {{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
-            {{ if $showDate }}
-              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-                {{ partial "meta/date.html" $prev.Date }}
-              </span>
-            {{ end }}
-          {{ end }}
-        </span>
-        <span class="flex flex-col items-end">
-          {{ if $next }}
-            <a
-              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
-              href="{{ $next.RelPermalink }}">
-              <span class="leading-6">
-                {{ $next.Title | emojify }}&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
-              </span>
-            </a>
-            {{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
-            {{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
-            {{ if $showDate }}
-              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
-                {{ partial "meta/date.html" $next.Date }}
-              </span>
-            {{ end }}
-          {{ end }}
-        </span>
-      </div>
-    </div>
-  {{ end }}
+	{{ if or .NextInSection .PrevInSection }}
+		{{ $next := .NextInSection }}
+		{{ $prev := .PrevInSection }}
+		{{ $invertPagination := partial "functions/param.html" (dict "params" site.Params.article "key" "invertPagination" "default" false) }}
+		{{ $invertPagination = partial "functions/param.html" (dict "params" .Params "key" "invertPagination" "default" $invertPagination) }}
+		{{ if $invertPagination }}
+			{{ $next = .PrevInSection }}
+			{{ $prev = .NextInSection }}
+		{{ end }}
+		<div class="pt-8">
+			<hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+			<div class="flex justify-between pt-3">
+				<span class="flex flex-col">
+					{{ if $prev }}
+						<a
+							class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+							href="{{ $prev.RelPermalink }}">
+							<span class="leading-6">
+								<span class="inline-block rtl:rotate-180">&larr;</span>&ensp;{{ $prev.Title | emojify }}
+							</span>
+						</a>
+						{{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
+						{{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
+						{{ if $showDate }}
+							<span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+								{{ partial "meta/date.html" $prev.Date }}
+							</span>
+						{{ end }}
+					{{ end }}
+				</span>
+				<span class="flex flex-col items-end">
+					{{ if $next }}
+						<a
+							class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+							href="{{ $next.RelPermalink }}">
+							<span class="leading-6">
+								{{ $next.Title | emojify }}&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+							</span>
+						</a>
+						{{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
+						{{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
+						{{ if $showDate }}
+							<span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+								{{ partial "meta/date.html" $next.Date }}
+							</span>
+						{{ end }}
+					{{ end }}
+				</span>
+			</div>
+		</div>
+	{{ end }}
 {{ end }}

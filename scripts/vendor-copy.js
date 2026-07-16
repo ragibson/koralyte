@@ -1,11 +1,11 @@
-const { cp, mkdir, readFile } = require('node:fs/promises');
-const { join, dirname } = require('node:path');
+const { cp, mkdir, readFile } = require("node:fs/promises");
+const { join, dirname } = require("node:path");
 
-const root = join(__dirname, '..');
+const root = join(__dirname, "..");
 
 async function main() {
   const { vendor } = JSON.parse(
-    await readFile(join(root, 'package.json'), 'utf-8')
+    await readFile(join(root, "package.json"), "utf-8"),
   );
 
   for (const { from, to } of vendor) {
@@ -15,7 +15,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err);
   process.exit(1);
 });

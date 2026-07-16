@@ -14,7 +14,9 @@ var hasResults = false;
 
 // Listen for events
 showButton ? showButton.addEventListener("click", displaySearch) : null;
-showButtonMobile ? showButtonMobile.addEventListener("click", displaySearch) : null;
+showButtonMobile
+  ? showButtonMobile.addEventListener("click", displaySearch)
+  : null;
 hideButton.addEventListener("click", hideSearch);
 wrapper.addEventListener("click", hideSearch);
 modal.addEventListener("click", function (event) {
@@ -27,7 +29,8 @@ document.addEventListener("keydown", function (event) {
   if (event.key == "/") {
     const active = document.activeElement;
     const tag = active.tagName;
-    const isInputField = tag === "INPUT" || tag === "TEXTAREA" || active.isContentEditable;
+    const isInputField =
+      tag === "INPUT" || tag === "TEXTAREA" || active.isContentEditable;
 
     if (!searchVisible && !isInputField) {
       event.preventDefault();

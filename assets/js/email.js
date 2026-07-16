@@ -6,7 +6,10 @@
     let mailto = email.startsWith("mailto:") ? email : "mailto:" + email;
 
     if (subject) {
-      mailto += (mailto.includes("?") ? "&" : "?") + "subject=" + encodeURIComponent(subject);
+      mailto +=
+        (mailto.includes("?") ? "&" : "?") +
+        "subject=" +
+        encodeURIComponent(subject);
     }
     link.href = mailto;
   });

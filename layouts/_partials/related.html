@@ -1,14 +1,14 @@
 {{ $showRelatedContent := partial "functions/param.html" (dict "params" site.Params.article "key" "showRelatedContent" "default" false) }}
 {{ $showRelatedContent = partial "functions/param.html" (dict "params" .Params "key" "showRelatedContent" "default" $showRelatedContent) }}
 {{ if $showRelatedContent }}
-  {{ $limit := site.Params.article.relatedContentLimit | default 3 }}
-  {{ $related := site.RegularPages.Related . | first $limit }}
-  {{ with $related }}
-    <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "article.related_articles" | emojify }}</h2>
-    <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-      {{ range . }}
-        {{ partial "article-link/card-related.html" . }}
-      {{ end }}
-    </section>
-  {{ end }}
+	{{ $limit := site.Params.article.relatedContentLimit | default 3 }}
+	{{ $related := site.RegularPages.Related . | first $limit }}
+	{{ with $related }}
+		<h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "article.related_articles" | emojify }}</h2>
+		<section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+			{{ range . }}
+				{{ partial "article-link/card-related.html" . }}
+			{{ end }}
+		</section>
+	{{ end }}
 {{ end }}

@@ -1,6 +1,6 @@
 name: Generated files up to date
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   css-up-to-date:
@@ -37,7 +37,7 @@ jobs:
           cache: pnpm
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: "1.22"
       - run: go install github.com/gohugoio/gotmplfmt@latest
       - run: corepack enable
       - run: pnpm install --frozen-lockfile

@@ -8,7 +8,7 @@ A description of most options is provided below.
 ## `[params]`
 
 | Key                             | Default      | Description                                                    |
-|---------------------------------|--------------|----------------------------------------------------------------|
+| ------------------------------- | ------------ | -------------------------------------------------------------- |
 | `colorScheme`                   | `"koralyte"` | Color theme to use.                                            |
 | `defaultAppearance`             | `"light"`    | Default website to `"light"` or `"dark"` mode.                 |
 | `autoSwitchAppearance`          | `true`       | Follow OS dark mode preference, if provided by the browser.    |
@@ -29,7 +29,7 @@ A description of most options is provided below.
 ## `[footer]`
 
 | Key                      | Default |
-|--------------------------|---------|
+| ------------------------ | ------- |
 | `showMenu`               | `true`  |
 | `showCopyright`          | `true`  |
 | `showThemeAttribution`   | `true`  |
@@ -39,7 +39,7 @@ A description of most options is provided below.
 ## `[homepage]`
 
 | Key                | Default     | Notes                                      |
-|--------------------|-------------|--------------------------------------------|
+| ------------------ | ----------- | ------------------------------------------ |
 | `showRecent`       | `false`     | Show recent articles on homepage.          |
 | `showRecentItems`  | `5`         | Number of recent items to show on homepage |
 | `showMoreLink`     | `false`     | Include "show more" link on homepage.      |
@@ -48,7 +48,7 @@ A description of most options is provided below.
 ## `[article]`
 
 | Key                       | Default |
-|---------------------------|---------|
+| ------------------------- | ------- |
 | `showDate`                | `true`  |
 | `showDateUpdated`         | `false` |
 | `showAuthor`              | `true`  |
@@ -67,20 +67,20 @@ A description of most options is provided below.
 ## `[list]`
 
 | Key           | Default |
-|---------------|---------|
+| ------------- | ------- |
 | `showSummary` | `false` |
 | `showCards`   | `false` |
 
 ## `[taxonomy]` / `[term]`
 
 | Key                      | Default |
-|--------------------------|---------|
+| ------------------------ | ------- |
 | `taxonomy.showTermCount` | `true`  |
 
 ## `[sitemap]`
 
 | Key             | Default                |
-|-----------------|------------------------|
+| --------------- | ---------------------- |
 | `excludedKinds` | `["taxonomy", "term"]` |
 
 ## Author and social links

@@ -9,7 +9,7 @@ module.exports = {
       "2xl": "1536px",
     },
     colors: {
-      ...require('tailwindcss/colors'),
+      ...require("tailwindcss/colors"),
       transparent: "transparent",
       neutral: {
         DEFAULT: "rgba(var(--color-neutral), <alpha-value>)",
@@ -171,8 +171,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };

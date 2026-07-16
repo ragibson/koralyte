@@ -1,13 +1,13 @@
 name: Build test
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 jobs:
   hugo-build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        hugo-version: [ '0.158.0', 'latest' ]
+        hugo-version: ["0.158.0", "latest"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

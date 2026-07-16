@@ -1,7 +1,12 @@
-const sitePreference = document.documentElement.getAttribute("data-default-appearance");
+const sitePreference = document.documentElement.getAttribute(
+  "data-default-appearance",
+);
 const userPreference = localStorage.getItem("appearance");
 
-if ((sitePreference === "dark" && userPreference === null) || userPreference === "dark") {
+if (
+  (sitePreference === "dark" && userPreference === null) ||
+  userPreference === "dark"
+) {
   document.documentElement.classList.add("dark");
 }
 
@@ -13,13 +18,15 @@ if (document.documentElement.getAttribute("data-auto-appearance") === "true") {
   ) {
     document.documentElement.classList.add("dark");
   }
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
-    if (event.matches) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  });
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (event) => {
+      if (event.matches) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    });
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -49,10 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     switcher.addEventListener("click", () => {
       document.documentElement.classList.toggle("dark");
       var targetAppearance = getTargetAppearance();
-      localStorage.setItem(
-        "appearance",
-        targetAppearance
-      );
+      localStorage.setItem("appearance", targetAppearance);
       updateMeta();
       updateTooltip(targetAppearance);
     });
@@ -65,10 +69,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     switcherMobile.addEventListener("click", () => {
       document.documentElement.classList.toggle("dark");
       var targetAppearance = getTargetAppearance();
-      localStorage.setItem(
-        "appearance",
-        targetAppearance
-      );
+      localStorage.setItem("appearance", targetAppearance);
       updateMeta();
       updateTooltip(targetAppearance);
     });
@@ -79,14 +80,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 });
 
-
 var updateMeta = () => {
   var elem, style;
-  elem = document.querySelector('body');
+  elem = document.querySelector("body");
   style = getComputedStyle(elem);
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', style.backgroundColor);
-}
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute("content", style.backgroundColor);
+};
 
 var getTargetAppearance = () => {
-  return document.documentElement.classList.contains("dark") ? "dark" : "light"
-}
+  return document.documentElement.classList.contains("dark") ? "dark" : "light";
+};

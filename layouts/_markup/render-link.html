@@ -4,22 +4,22 @@
 {{- $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
 {{- if strings.HasPrefix $u.String "#" -}}
-  {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
 {{- else if and $href (not $u.IsAbs) -}}
-  {{- $path := strings.TrimPrefix "./" $u.Path -}}
-  {{- with or
-    ($.PageInner.GetPage $path)
-    ($.PageInner.Resources.Get $path)
-    (resources.Get $path)
-  -}}
-    {{- $href = .RelPermalink -}}
-    {{- with $u.RawQuery -}}
-      {{- $href = printf "%s?%s" $href . -}}
-    {{- end -}}
-    {{- with $u.Fragment -}}
-      {{- $href = printf "%s#%s" $href . -}}
-    {{- end -}}
-  {{- end -}}
+	{{- $path := strings.TrimPrefix "./" $u.Path -}}
+	{{- with or
+		($.PageInner.GetPage $path)
+		($.PageInner.Resources.Get $path)
+		(resources.Get $path)
+	-}}
+		{{- $href = .RelPermalink -}}
+		{{- with $u.RawQuery -}}
+			{{- $href = printf "%s?%s" $href . -}}
+		{{- end -}}
+		{{- with $u.Fragment -}}
+			{{- $href = printf "%s#%s" $href . -}}
+		{{- end -}}
+	{{- end -}}
 {{- end -}}
 
 {{/* Open external links in a new tab if
@@ -33,7 +33,7 @@
 {{- $newTab := and $forceNewTab $isExternal -}}
 
 <a href="{{ $href }}" {{ with .Title }}title="{{ . }}"{{ end }}
-  {{- if $newTab }} target="_blank" rel="noreferrer"{{ end }}>
-  {{- .Text | safeHTML -}}
+	{{- if $newTab }} target="_blank" rel="noreferrer"{{ end }}>
+	{{- .Text | safeHTML -}}
 </a>
 {{- /* Trim EOF */ -}}

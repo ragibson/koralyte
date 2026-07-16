@@ -1,30 +1,30 @@
 {{- if gt .Paginator.TotalPages 1 -}}
-  {{ $paginator := .Paginator }}
-  {{ $current := $paginator.PageNumber }}
-  {{ $min := math.Max 1 (sub $current 2) }}
-  {{ $max := math.Min $paginator.TotalPages (add $current 2) }}
-  {{ $showEllipsis := false }}
-  <ul class="flex flex-row mt-8 justify-center">
-    {{ if $paginator.HasPrev }}
-      <li>
-        <a href="{{ $paginator.Prev.URL }}" class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral" rel="prev">&larr;</a>
-      </li>
-    {{ end }}
-    {{- range $paginator.Pagers -}}
-      {{- if or (le .PageNumber 1) (ge .PageNumber $paginator.TotalPages) (and (ge .PageNumber $min) (le .PageNumber $max)) -}}
-        <li>
-          <a href="{{ .URL }}" class="{{ if eq . $paginator }}bg-primary-200 dark:bg-primary-400 dark:text-neutral-800{{ end }} mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral">{{ .PageNumber }}</a>
-        </li>
-        {{- $showEllipsis = true -}}
-      {{- else if $showEllipsis -}}
-        <li><span class="mx-1 block min-w-[1.8rem] text-center text-neutral-400" aria-hidden="true">&hellip;</span></li>
-        {{- $showEllipsis = false -}}
-      {{- end -}}
-    {{- end -}}
-    {{ if $paginator.HasNext }}
-      <li>
-        <a href="{{ $paginator.Next.URL }}" class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral" rel="next">&rarr;</a>
-      </li>
-    {{ end }}
-  </ul>
+	{{ $paginator := .Paginator }}
+	{{ $current := $paginator.PageNumber }}
+	{{ $min := math.Max 1 (sub $current 2) }}
+	{{ $max := math.Min $paginator.TotalPages (add $current 2) }}
+	{{ $showEllipsis := false }}
+	<ul class="flex flex-row mt-8 justify-center">
+		{{ if $paginator.HasPrev }}
+			<li>
+				<a href="{{ $paginator.Prev.URL }}" class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral" rel="prev">&larr;</a>
+			</li>
+		{{ end }}
+		{{- range $paginator.Pagers -}}
+			{{- if or (le .PageNumber 1) (ge .PageNumber $paginator.TotalPages) (and (ge .PageNumber $min) (le .PageNumber $max)) -}}
+				<li>
+					<a href="{{ .URL }}" class="{{ if eq . $paginator }}bg-primary-200 dark:bg-primary-400 dark:text-neutral-800{{ end }} mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral">{{ .PageNumber }}</a>
+				</li>
+				{{- $showEllipsis = true -}}
+			{{- else if $showEllipsis -}}
+				<li><span class="mx-1 block min-w-[1.8rem] text-center text-neutral-400" aria-hidden="true">&hellip;</span></li>
+				{{- $showEllipsis = false -}}
+			{{- end -}}
+		{{- end -}}
+		{{ if $paginator.HasNext }}
+			<li>
+				<a href="{{ $paginator.Next.URL }}" class="mx-1 block min-w-[1.8rem] rounded text-center hover:bg-primary-600 hover:text-neutral" rel="next">&rarr;</a>
+			</li>
+		{{ end }}
+	</ul>
 {{- end -}}

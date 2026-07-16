@@ -4,32 +4,32 @@
 */}}
 {{ $page := . }}
 {{ if reflect.IsMap . }}
-  {{ $page = .page }}
+	{{ $page = .page }}
 {{ end }}
 {{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
 {{ $featuredURL := "" }}
 
 {{ if not $page.Params.hideFeatureImage }}
-  {{ $featured := "" }}
-  {{ with $page.Params.featureimage }}
-    {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
-      {{ $featured = resources.GetRemote . }}
-    {{ else }}
-      {{ $featured = $page.Resources.Get . }}
-    {{ end }}
-  {{ end }}
-  {{ if not $featured }}
-    {{ $images := $page.Resources.ByType "image" }}
-    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
-      {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
-    {{ end }}
-  {{ end }}
-  {{ with $featured }}
-    {{ $featuredURL = .RelPermalink }}
-    {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-      {{ $featuredURL = (.Resize "600x").RelPermalink }}
-    {{ end }}
-  {{ end }}
+	{{ $featured := "" }}
+	{{ with $page.Params.featureimage }}
+		{{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+			{{ $featured = resources.GetRemote . }}
+		{{ else }}
+			{{ $featured = $page.Resources.Get . }}
+		{{ end }}
+	{{ end }}
+	{{ if not $featured }}
+		{{ $images := $page.Resources.ByType "image" }}
+		{{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+			{{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+		{{ end }}
+	{{ end }}
+	{{ with $featured }}
+		{{ $featuredURL = .RelPermalink }}
+		{{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
+			{{ $featuredURL = (.Resize "600x").RelPermalink }}
+		{{ end }}
+	{{ end }}
 {{ end }}
 
 {{ return $featuredURL }}

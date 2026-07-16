@@ -1,7 +1,7 @@
 User-agent: *
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
-Allow: /
+	Allow: /
 {{- else }}
-Disallow: /
+	Disallow: /
 {{- end }}
 Sitemap: {{ "sitemap.xml" | absLangURL }}

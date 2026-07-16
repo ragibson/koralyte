@@ -1,12 +1,12 @@
 {{ $anchor := anchorize .Anchor }}
 <h{{ .Level }} class="relative group">{{ .Text | safeHTML }}
-    <span id="{{ $anchor }}" class="anchor"></span>
-    {{ $showHeadingAnchors := partial "functions/param.html" (dict "params" site.Params.article "key" "showHeadingAnchors" "default" true) }}
-    {{ $showHeadingAnchors = partial "functions/param.html" (dict "params" .Page.Params "key" "showHeadingAnchors" "default" $showHeadingAnchors) }}
-    {{ if $showHeadingAnchors }}
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">#</a>
-    </span>
-    {{ end }}
-</h{{ .Level }}>
+	<span id="{{ $anchor }}" class="anchor"></span>
+	{{ $showHeadingAnchors := partial "functions/param.html" (dict "params" site.Params.article "key" "showHeadingAnchors" "default" true) }}
+	{{ $showHeadingAnchors = partial "functions/param.html" (dict "params" .Page.Params "key" "showHeadingAnchors" "default" $showHeadingAnchors) }}
+	{{ if $showHeadingAnchors }}
+		<span
+			class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+			<a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">#</a>
+		</span>
+	{{ end }}
+	</h{{ .Level }}>

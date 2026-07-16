@@ -1,32 +1,32 @@
 {{ if .IsHome -}}
-  {{ $schema := dict "@context" "https://schema.org" "@type" "WebSite" "@id" site.Home.Permalink "name" site.Title "url" site.Home.Permalink }}
-  {{ with site.Params.description }}{{ $schema = merge $schema (dict "description" .) }}{{ end }}
-  {{ with site.Language.Locale }}{{ $schema = merge $schema (dict "inLanguage" .) }}{{ end }}
-  {{ with site.Params.keywords }}{{ $schema = merge $schema (dict "keywords" .) }}{{ end }}
-  {{ with site.Params.Author.name }}{{ $schema = merge $schema (dict "publisher" (dict "@type" "Person" "name" .)) }}{{ end }}
+	{{ $schema := dict "@context" "https://schema.org" "@type" "WebSite" "@id" site.Home.Permalink "name" site.Title "url" site.Home.Permalink }}
+	{{ with site.Params.description }}{{ $schema = merge $schema (dict "description" .) }}{{ end }}
+	{{ with site.Language.Locale }}{{ $schema = merge $schema (dict "inLanguage" .) }}{{ end }}
+	{{ with site.Params.keywords }}{{ $schema = merge $schema (dict "keywords" .) }}{{ end }}
+	{{ with site.Params.Author.name }}{{ $schema = merge $schema (dict "publisher" (dict "@type" "Person" "name" .)) }}{{ end }}
   <script type="application/ld+json">
   {{ $schema | jsonify | safeJS }}
   </script>
 {{ else }}
-  {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
-  {{ $schema := dict
-    "@context" "https://schema.org"
-    "@type" "Article"
-    "name" .Title
-    "headline" .Title
-    "url" .Permalink
-    "author" (dict "@type" "Person" "name" site.Params.Author.name)
-    "mainEntityOfPage" .Permalink
-    "wordCount" .WordCount
-  }}
-  {{ with site.GetPage .Section }}{{ $schema = merge $schema (dict "articleSection" .Title) }}{{ end }}
-  {{ with .Description }}{{ $schema = merge $schema (dict "description" .) }}{{ end }}
-  {{ with site.Language.Locale }}{{ $schema = merge $schema (dict "inLanguage" .) }}{{ end }}
-  {{ with .PublishDate }}{{ $schema = merge $schema (dict "copyrightYear" (.Format "2006") "datePublished" (.Format $iso8601)) }}{{ end }}
-  {{ with .Date }}{{ $schema = merge $schema (dict "dateCreated" (.Format $iso8601)) }}{{ end }}
-  {{ with .ExpiryDate }}{{ $schema = merge $schema (dict "expires" (.Format $iso8601)) }}{{ end }}
-  {{ with .Lastmod }}{{ $schema = merge $schema (dict "dateModified" (.Format $iso8601)) }}{{ end }}
-  {{ with or .Keywords .Params.tags }}{{ $schema = merge $schema (dict "keywords" .) }}{{ end }}
+	{{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+	{{ $schema := dict
+		"@context" "https://schema.org"
+		"@type" "Article"
+		"name" .Title
+		"headline" .Title
+		"url" .Permalink
+		"author" (dict "@type" "Person" "name" site.Params.Author.name)
+		"mainEntityOfPage" .Permalink
+		"wordCount" .WordCount
+	}}
+	{{ with site.GetPage .Section }}{{ $schema = merge $schema (dict "articleSection" .Title) }}{{ end }}
+	{{ with .Description }}{{ $schema = merge $schema (dict "description" .) }}{{ end }}
+	{{ with site.Language.Locale }}{{ $schema = merge $schema (dict "inLanguage" .) }}{{ end }}
+	{{ with .PublishDate }}{{ $schema = merge $schema (dict "copyrightYear" (.Format "2006") "datePublished" (.Format $iso8601)) }}{{ end }}
+	{{ with .Date }}{{ $schema = merge $schema (dict "dateCreated" (.Format $iso8601)) }}{{ end }}
+	{{ with .ExpiryDate }}{{ $schema = merge $schema (dict "expires" (.Format $iso8601)) }}{{ end }}
+	{{ with .Lastmod }}{{ $schema = merge $schema (dict "dateModified" (.Format $iso8601)) }}{{ end }}
+	{{ with or .Keywords .Params.tags }}{{ $schema = merge $schema (dict "keywords" .) }}{{ end }}
   <script type="application/ld+json">
   {{ slice $schema | jsonify | safeJS }}
   </script>

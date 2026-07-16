@@ -38,17 +38,17 @@ button,
 
 /* RTL support */
 .prose blockquote {
-  @apply rtl:pr-4 rtl:border-l-0 rtl:border-r-4;
+  @apply rtl:border-r-4 rtl:border-l-0 rtl:pr-4;
 }
 
 .prose ul > li,
 .prose ol > li {
-  @apply rtl:pl-0 rtl:pr-2 rtl:mr-7;
+  @apply rtl:mr-7 rtl:pr-2 rtl:pl-0;
 }
 
 .prose ol > li:before,
 .prose ul > li:before {
-  @apply rtl:left-auto rtl:right-1;
+  @apply rtl:right-1 rtl:left-auto;
 }
 
 .prose thead td:first-child,
@@ -93,7 +93,7 @@ button,
 
 .toc ul,
 .toc li {
-  @apply px-0 leading-snug list-none;
+  @apply list-none px-0 leading-snug;
 }
 
 .toc ul ul {
@@ -118,9 +118,7 @@ button,
 }
 
 .copy-button {
-  @apply absolute top-0 right-0 z-10 invisible w-20 py-1 font-mono text-sm cursor-pointer
-  opacity-90 bg-neutral-200 whitespace-nowrap rounded-bl-md rounded-tr-md text-neutral-700
-  dark:bg-neutral-600 dark:text-neutral-200 overflow-hidden truncate;
+  @apply invisible absolute top-0 right-0 z-10 w-20 cursor-pointer truncate overflow-hidden rounded-tr-md rounded-bl-md bg-neutral-200 py-1 font-mono text-sm whitespace-nowrap text-neutral-700 opacity-90 dark:bg-neutral-600 dark:text-neutral-200;
 }
 
 .copy-button:hover,
@@ -131,7 +129,7 @@ button,
 }
 
 .copy-textarea {
-  @apply absolute opacity-5 -z-10;
+  @apply absolute -z-10 opacity-5;
 }
 
 /* Fix long KaTeX equations on mobile (see https://katex.org/docs/issues.html#css-customization) */
@@ -249,9 +247,10 @@ pre {
       background-color: var(--scrollbar-corner);
       border-radius: var(--scrollbar-corner-radius);
     }
-    @supports (-moz-appearance:none) {
+    @supports (-moz-appearance: none) {
       scrollbar-width: thin;
-      scrollbar-color: var(--scrollbar-thumb, initial) var(--scrollbar-track, initial);
+      scrollbar-color: var(--scrollbar-thumb, initial)
+        var(--scrollbar-track, initial);
     }
     &::-webkit-scrollbar {
       display: block;
@@ -271,7 +270,7 @@ pre {
 
 @layer base {
   * {
-    @supports (-moz-appearance:none) {
+    @supports (-moz-appearance: none) {
       scrollbar-color: initial;
       scrollbar-width: initial;
     }

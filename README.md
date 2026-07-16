@@ -11,23 +11,23 @@ This theme powers my personal website: <https://ryanagibson.com/>.
 
 ## Features
 
-* Dark/light mode with system preference detection
-* Client-side search
-* Tailwind CSS v4
-* Smart scrolling table of contents
-* Code blocks with copy buttons
-* Responsive figures with click-to-zoom
-* KaTeX math rendering
-* YouTube video embeds
-* Google Analytics support
+- Dark/light mode with system preference detection
+- Client-side search
+- Tailwind CSS v4
+- Smart scrolling table of contents
+- Code blocks with copy buttons
+- Responsive figures with click-to-zoom
+- KaTeX math rendering
+- YouTube video embeds
+- Google Analytics support
 
 See [docs/shortcodes.md](docs/shortcodes.md) for a list of available shortcodes.
 
 ## Requirements
 
-* Hugo extended v0.146.0+
-* Node.js 22+ (only if you need to rebuild CSS)
-* pnpm 11+ (only if you need to rebuild CSS)
+- Hugo extended v0.146.0+
+- Node.js 22+ (only if you need to rebuild CSS)
+- pnpm 11+ (only if you need to rebuild CSS)
 
 ## Installation
 
