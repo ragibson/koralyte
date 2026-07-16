@@ -38,6 +38,7 @@
 {{ if .HasChildren }}
 	<div class="nested-menu">
 		<div class="cursor-pointer flex items-center">
+			{{/* gotmplfmt-ignore-start */}}
 			<a
 				{{ if .URL }}
 					href="{{ .URL }}"
@@ -62,18 +63,20 @@
 					{{ partial "icon.html" "chevron-down" }}
 				</span>
 			</a>
+			{{/* gotmplfmt-ignore-end */}}
 		</div>
 		<div class="menuhide">
 			<div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl bg-neutral/25 dark:bg-neutral-800/25">
 				<div class="flex flex-col space-y-3">
-					{{ range .Children }}
-						<a
-							href="{{ .URL }}"
-							{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
-								target="_blank"
-							{{ end }}
-							{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-						class="flex items-center bf-icon-color-hover"></a>
+			{{ range .Children }}
+				{{/* gotmplfmt-ignore-start */}}
+				<a
+					href="{{ .URL }}"
+					{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+						target="_blank"
+					{{ end }}
+					{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
+					class="flex items-center bf-icon-color-hover">
 					{{ if .Pre }}
 						<span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
 							{{ partial "icon.html" .Pre }}
@@ -83,12 +86,14 @@
 						{{ .Name | markdownify }}
 					</span>
 				</a>
-					{{ end }}
+				{{/* gotmplfmt-ignore-end */}}
+			{{ end }}
 				</div>
 			</div>
 		</div>
 	</div>
 {{ else }}
+	{{/* gotmplfmt-ignore-start */}}
 	<a
 		href="{{ .URL }}"
 		{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
@@ -108,5 +113,6 @@
 			</span>
 		{{ end }}
 	</a>
+	{{/* gotmplfmt-ignore-end */}}
 {{ end }}
 {{ end }}

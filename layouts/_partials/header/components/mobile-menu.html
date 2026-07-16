@@ -54,29 +54,31 @@
 {{ range site.Menus.main }}
 	{{ $submenuId := printf "fullscreen-submenu-%s" (.Identifier | default .Name | anchorize) }}
 	<div class="px-2">
+		{{/* gotmplfmt-ignore-start */}}
 		<a
 			href="{{ .URL }}"
 			{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
 			{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
 				target="_blank"
 			{{ end }}
-		class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"></a>
-	{{ if .Pre }}
-		<span class="flex items-center justify-center h-8 w-8 text-2xl">
-			{{ partial "icon.html" .Pre }}
-		</span>
-	{{ end }}
-	<span title="{{ .Title }}" class="text-2xl font-bold tracking-tight">
-		{{ .Name | markdownify }}
-	</span>
-	{{ if .HasChildren }}
-		<label
-			for="{{ $submenuId }}"
-			class="ms-auto flex items-center justify-center h-10 w-10 cursor-pointer rounded-lg bf-icon-color-hover border bf-border-color bf-border-color-hover">
-			{{ partial "icon.html" "chevron-down" }}
-		</label>
-	{{ end }}
-	</a>
+			class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+			{{ if .Pre }}
+				<span class="flex items-center justify-center h-8 w-8 text-2xl">
+					{{ partial "icon.html" .Pre }}
+				</span>
+			{{ end }}
+			<span title="{{ .Title }}" class="text-2xl font-bold tracking-tight">
+				{{ .Name | markdownify }}
+			</span>
+			{{ if .HasChildren }}
+				<label
+					for="{{ $submenuId }}"
+					class="ms-auto flex items-center justify-center h-10 w-10 cursor-pointer rounded-lg bf-icon-color-hover border bf-border-color bf-border-color-hover">
+					{{ partial "icon.html" "chevron-down" }}
+				</label>
+			{{ end }}
+		</a>
+		{{/* gotmplfmt-ignore-end */}}
 
 	{{ if .HasChildren }}
 		<input checked type="checkbox" id="{{ $submenuId }}" autocomplete="off" class="hidden peer/full">
@@ -85,24 +87,26 @@
 			class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 peer-checked/full:grid-rows-[1fr]">
 			<div class="overflow-hidden">
 				<div class="ms-7 mt-4">
-					{{ range .Children }}
-						<a
-							href="{{ .URL }}"
-							{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-							{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
-								target="_blank"
-							{{ end }}
-						class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200"></a>
-					{{ if .Pre }}
-						<span class="flex items-center justify-center h-5 w-5">
-							{{ partial "icon.html" .Pre }}
+				{{ range .Children }}
+					{{/* gotmplfmt-ignore-start */}}
+					<a
+						href="{{ .URL }}"
+						{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
+						{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+							target="_blank"
+						{{ end }}
+						class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+						{{ if .Pre }}
+							<span class="flex items-center justify-center h-5 w-5">
+								{{ partial "icon.html" .Pre }}
+							</span>
+						{{ end }}
+						<span title="{{ .Title }}" class="text-lg">
+							{{ .Name | markdownify }}
 						</span>
-					{{ end }}
-					<span title="{{ .Title }}" class="text-lg">
-						{{ .Name | markdownify }}
-					</span>
-				</a>
-					{{ end }}
+					</a>
+					{{/* gotmplfmt-ignore-end */}}
+				{{ end }}
 				</div>
 			</div>
 		</div>
