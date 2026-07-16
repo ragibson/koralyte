@@ -14,7 +14,9 @@
     "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css -w",
     "build": "tailwindcss -i ./assets/css/main.css -o ./assets/css/compiled/main.css --minify",
     "format": "prettier --write . && gotmplfmt -w layouts",
-    "format:check": "prettier --check . && gotmplfmt -l layouts | grep . && exit 1 || exit 0"
+    "format:check": "pnpm run format:check:prettier && pnpm run format:check:gotmplfmt",
+    "format:check:prettier": "prettier --check .",
+    "format:check:gotmplfmt": "test -z \"$(gotmplfmt -l layouts)\""
   },
   "repository": {
     "type": "git",

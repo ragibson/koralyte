@@ -1,3 +1,7 @@
+# layouts are handled by gotmplfmt
+layouts/
+
+# auto-generated files
 assets/css/compiled/
 assets/lib/
 pnpm-lock.yaml
