@@ -27,7 +27,7 @@
 	{{ end }}
 	<div class="{{ $cardContentClasses }}">
 		<header class="items-center text-start text-xl font-semibold">
-			{{/* gotmplfmt-ignore-start */}}
+			{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 			<a
 				{{ with .Params.externalUrl }}
 					href="{{ . }}" target="_blank" rel="external"

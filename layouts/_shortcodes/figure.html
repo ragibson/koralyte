@@ -52,5 +52,7 @@
 		{{- end }}
 		{{ if $href }}</a>{{ end }}
 		{{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
-	</figure>
+{{/* gotmplfmt-ignore-start: formatter indents and causes Markdown processor to render this as a code block. */}}
+</figure>
+{{/* gotmplfmt-ignore-end */}}
 {{- end -}}

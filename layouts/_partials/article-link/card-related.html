@@ -24,7 +24,7 @@
 	{{ end }}
 	<div class="p-4">
 		<header>
-			{{/* gotmplfmt-ignore-start */}}
+			{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 			<a
 				{{ with $page.Params.externalUrl }}
 					href="{{ . }}" target="_blank" rel="external"

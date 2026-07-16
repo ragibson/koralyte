@@ -54,7 +54,7 @@
 {{ range site.Menus.main }}
 	{{ $submenuId := printf "fullscreen-submenu-%s" (.Identifier | default .Name | anchorize) }}
 	<div class="px-2">
-		{{/* gotmplfmt-ignore-start */}}
+		{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 		<a
 			href="{{ .URL }}"
 			{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
@@ -88,7 +88,7 @@
 				<div class="overflow-hidden">
 					<div class="ms-7 mt-4">
 						{{ range .Children }}
-					{{/* gotmplfmt-ignore-start */}}
+					{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 					<a
 						href="{{ .URL }}"
 						{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
