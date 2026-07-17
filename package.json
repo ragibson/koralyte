@@ -1,6 +1,6 @@
 {
   "name": "koralyte",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Koralyte - an elegant, minimalist Hugo theme for creating clean websites and blogs.",
   "packageManager": "pnpm@11.13.1",
   "engines": {

@@ -24,7 +24,7 @@ Koralyte uses two formatters:
 - Prettier for JS, CSS, JSON, YAML, and Markdown.
 - gotmplfmt for Go/Hugo templates in `layouts/`.
 
-gotmplfmt is a standalong CLI, so it has to be installed separately.
+gotmplfmt is a standalone CLI, so it has to be installed separately.
 Install gotmplfmt (not managed via package.json/go.mod, since it's a standalone CLI):
 
 ```bash
@@ -80,7 +80,7 @@ specific release.
 The Go version in the module should be kept up to date with the rest of the documentation.
 
 ```
-hugo mod get github.com/ragibson/koralyte@v1.0.0
+hugo mod get github.com/ragibson/koralyte
 ```
 
 ## Security
@@ -128,10 +128,16 @@ koralyte/
 │   ├── _markup/           # render hooks
 │   ├── _partials/         # theme partials
 │   ├── _shortcodes/       # theme shortcodes
+│   ├── 404.html           # 404 error page
 │   ├── baseof.html        # base template
 │   ├── home.html          # home page kind
-│   ├── page.html          # single page kind
+│   ├── index.json         # JSON output for client-side search
+│   ├── list.html          # default list layout
+│   ├── page.html          # single page layout
+│   ├── robots.txt         # robots.txt template
+│   ├── rss.xml            # RSS feed template
 │   ├── section.html       # section listing
+│   ├── sitemap.xml        # sitemap template
 │   ├── taxonomy.html      # taxonomy listing
 │   ├── term.html          # term page
 ├── scripts/               # build scripts

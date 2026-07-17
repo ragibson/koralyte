@@ -8,7 +8,7 @@ description = "An elegant, minimalist Hugo theme for creating clean websites and
 homepage = "https://github.com/ragibson/koralyte"
 
 tags = ["blog", "minimal", "responsive", "dark mode", "dark", "light", "tailwind", "personal"]
-features = ["syntax highlighting", "dark mode", "emoji"]
+features = ["syntax highlighting", "dark mode", "emoji", "client-side search", "Tailwind CSS", "responsive", "KaTeX", "YouTube embeds"]
 
 [author]
   name = "Ryan Gibson"

@@ -25,16 +25,16 @@ A description of most options is provided below.
 | `robots`                        | -            | Site-level robots meta tag.                                    |
 | `smartTOC`                      | `false`      | Use smart table of contents that scrolls with the page.        |
 | `smartTOCHideUnfocusedChildren` | `false`      | Collapse inactive nested table-of-contents entries.            |
+| `showAppearanceSwitcher`        | `true`       | Show light/dark mode toggle in header.                         |
 
 ## `[footer]`
 
-| Key                      | Default | Description                            |
-| ------------------------ | ------- | -------------------------------------- |
-| `showMenu`               | `true`  | Show footer tags link.                 |
-| `showCopyright`          | `true`  | Show author copyright notice.          |
-| `showThemeAttribution`   | `true`  | Show "Hugo & theme" attribution.       |
-| `showAppearanceSwitcher` | `true`  | Show light/dark mode toggle in header. |
-| `showScrollToTop`        | `true`  | Show scroll-to-top button.             |
+| Key                    | Default | Description                      |
+| ---------------------- | ------- | -------------------------------- |
+| `showMenu`             | `true`  | Show footer tags link.           |
+| `showCopyright`        | `true`  | Show author copyright notice.    |
+| `showThemeAttribution` | `true`  | Show "Hugo & theme" attribution. |
+| `showScrollToTop`      | `true`  | Show scroll-to-top button.       |
 
 ## `[homepage]`
 
