@@ -16,7 +16,7 @@ A description of most options is provided below.
 | `enableCodeCopy`                | `false`      | Enable copy buttons on code blocks.                            |
 | `disableImageOptimization`      | `true`       | Skip Hugo's build-time image processing.                       |
 | `disableImageZoom`              | `false`      | Disable zoom-to-click on images.                               |
-| `disableTextInHeader`           | `false`      | Hide site title text in page title (browswer tab).             |
+| `disableTextInHeader`           | `false`      | Hide site title text in the site header.                       |
 | `enableStyledScrollbar`         | `true`       | Enable custom Tailwind scrollbar.                              |
 | `fingerprintAlgorithm`          | `"sha512"`   | SRI hash algorithm for CSS/JS bundles.                         |
 | `mainSections`                  | `["posts"]`  | List of content sections used for recent articles on homepage. |
@@ -38,7 +38,7 @@ A description of most options is provided below.
 
 ## `[homepage]`
 
-| Key                | Default     | Notes                                      |
+| Key                | Default     | Description                                |
 | ------------------ | ----------- | ------------------------------------------ |
 | `showRecent`       | `false`     | Show recent articles on homepage.          |
 | `showRecentItems`  | `5`         | Number of recent items to show on homepage |
@@ -109,5 +109,5 @@ links = [
 
 There are a few files that you can override in your website and the theme will automatically use them.
 
-- **`layouts/partials/extend-head.html`** is appended to the website header if it exists.
+- **`layouts/_partials/extend-head.html`** is appended to the website header if it exists.
 - **`assets/css/custom.css`** is appended after the theme's CSS if it exists.

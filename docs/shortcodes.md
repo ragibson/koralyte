@@ -5,7 +5,8 @@ There are a few extra shortcodes available in this theme.
 ## figure
 
 This overrides Hugo's default `figure` shortcode with click-to-zoom, captions, and responsive images using `srcset` for
-serving appropriately sized images based on the user's device and screen resolution.
+serving appropriately sized images based on the user's device and screen resolution. Note that `srcset` generation
+requires Hugo's image optimization, which is turned off by default (`disableImageOptimization = true`).
 
 You can also pass `default=true` to drop back to Hugo's default version of this shortcode.
 
