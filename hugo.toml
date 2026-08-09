@@ -10,7 +10,7 @@ summaryLength = 0
 enableEmoji = true
 
 [pagination]
-  pagerSize = 100
+  pagerSize = 10
 
 [imaging]
   anchor = 'Center'

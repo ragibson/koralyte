@@ -7,25 +7,26 @@ A description of most options is provided below.
 
 ## `[params]`
 
-| Key                             | Default      | Description                                                    |
-| ------------------------------- | ------------ | -------------------------------------------------------------- |
-| `colorScheme`                   | `"koralyte"` | Color theme to use.                                            |
-| `defaultAppearance`             | `"light"`    | Default website to `"light"` or `"dark"` mode.                 |
-| `autoSwitchAppearance`          | `true`       | Follow OS dark mode preference, if provided by the browser.    |
-| `enableSearch`                  | `true`       | Enable client-side search bar.                                 |
-| `enableCodeCopy`                | `false`      | Enable copy buttons on code blocks.                            |
-| `disableImageOptimization`      | `true`       | Skip Hugo's build-time image processing.                       |
-| `disableImageZoom`              | `false`      | Disable zoom-to-click on images.                               |
-| `disableTextInHeader`           | `false`      | Hide site title text in the site header.                       |
-| `enableStyledScrollbar`         | `true`       | Enable custom Tailwind scrollbar.                              |
-| `fingerprintAlgorithm`          | `"sha512"`   | SRI hash algorithm for CSS/JS bundles.                         |
-| `mainSections`                  | `["posts"]`  | List of content sections used for recent articles on homepage. |
-| `description`                   | -            | Site meta description and schema description.                  |
-| `keywords`                      | -            | Site meta keywords and schema keywords.                        |
-| `robots`                        | -            | Site-level robots meta tag.                                    |
-| `smartTOC`                      | `false`      | Use smart table of contents that scrolls with the page.        |
-| `smartTOCHideUnfocusedChildren` | `false`      | Collapse inactive nested table-of-contents entries.            |
-| `showAppearanceSwitcher`        | `true`       | Show light/dark mode toggle in header.                         |
+| Key                             | Default      | Description                                                                                              |
+| ------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------- |
+| `colorScheme`                   | `"koralyte"` | Color theme to use.                                                                                      |
+| `defaultAppearance`             | `"light"`    | Default website to `"light"` or `"dark"` mode.                                                           |
+| `autoSwitchAppearance`          | `true`       | Follow OS dark mode preference, if provided by the browser.                                              |
+| `enableSearch`                  | `true`       | Enable client-side search bar.                                                                           |
+| `enableCodeCopy`                | `false`      | Enable copy buttons on code blocks.                                                                      |
+| `disableImageOptimization`      | `true`       | Skip Hugo's build-time image processing (we default to true as the best default for scientific figures). |
+| `disableImageZoom`              | `false`      | Disable zoom-to-click on images.                                                                         |
+| `disableTextInHeader`           | `false`      | Hide site title text in the site header.                                                                 |
+| `enableStyledScrollbar`         | `true`       | Enable custom Tailwind scrollbar.                                                                        |
+| `fingerprintAlgorithm`          | `"sha512"`   | SRI hash algorithm for CSS/JS bundles.                                                                   |
+| `mainSections`                  | `["posts"]`  | List of content sections used for recent articles on homepage.                                           |
+| `description`                   | -            | Site meta description and schema description.                                                            |
+| `keywords`                      | -            | Site meta keywords and schema keywords.                                                                  |
+| `robots`                        | -            | Site-level robots meta tag.                                                                              |
+| `smartTOC`                      | `false`      | Use smart table of contents that scrolls with the page.                                                  |
+| `summaryLength`                 | `0`          | Auto-summary word count (`0` = disable auto summaries; use front matter `summary` instead).              |
+| `smartTOCHideUnfocusedChildren` | `false`      | Collapse inactive nested table-of-contents entries.                                                      |
+| `showAppearanceSwitcher`        | `true`       | Show light/dark mode toggle in header.                                                                   |
 
 ## `[footer]`
 

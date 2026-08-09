@@ -5,7 +5,9 @@
 	{{ end }}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="theme-color">
+	{{/* Matching light mode (--color-neutral: 255, 255, 255) and dark mode (--color-neutral-800: 30, 41, 59). */}}
+	<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+	<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e293b">
 
 	{{/* Title */}}
 	{{ if .IsHome }}
