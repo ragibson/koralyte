@@ -16,6 +16,9 @@
 			{{ $featured = resources.GetRemote . }}
 		{{ else }}
 			{{ $featured = $page.Resources.Get . }}
+			{{ if not $featured }}
+				{{ $featured = resources.Get . }}
+			{{ end }}
 		{{ end }}
 	{{ end }}
 	{{ if not $featured }}
