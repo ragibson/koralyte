@@ -33,8 +33,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   const switcher = document.getElementById("appearance-switcher");
   const switcherMobile = document.getElementById("appearance-switcher-mobile");
 
-  const darkLabel = '{{ i18n "footer.dark_appearance" }}';
-  const lightLabel = '{{ i18n "footer.light_appearance" }}';
+  const darkLabel = {{ i18n "footer.dark_appearance" | jsonify }};
+  const lightLabel = {{ i18n "footer.light_appearance" | jsonify }};
 
   updateMeta();
 

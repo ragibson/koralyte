@@ -11,6 +11,7 @@ var last = output.lastChild;
 var searchVisible = false;
 var indexed = false;
 var hasResults = false;
+var previouslyFocused = null;
 
 // Listen for events
 showButton ? showButton.addEventListener("click", displaySearch) : null;
@@ -41,6 +42,27 @@ document.addEventListener("keydown", function (event) {
   // Esc to close search wrapper
   if (event.key == "Escape") {
     hideSearch();
+  }
+
+  // Keep keyboard focus inside the open modal.
+  if (event.key == "Tab" && searchVisible) {
+    var focusable = modal.querySelectorAll(
+      'a[href], button, input, [tabindex="0"]',
+    );
+    if (focusable.length > 0) {
+      var firstFocusable = focusable[0];
+      var lastFocusable = focusable[focusable.length - 1];
+      if (!modal.contains(document.activeElement)) {
+        event.preventDefault();
+        firstFocusable.focus();
+      } else if (event.shiftKey && document.activeElement == firstFocusable) {
+        event.preventDefault();
+        lastFocusable.focus();
+      } else if (!event.shiftKey && document.activeElement == lastFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
+    }
   }
 
   // Down arrow to move down results list
@@ -94,6 +116,7 @@ function displaySearch() {
     buildIndex();
   }
   if (!searchVisible) {
+    previouslyFocused = document.activeElement;
     document.body.style.overflow = "hidden";
     wrapper.style.visibility = "visible";
     input.focus();
@@ -107,7 +130,16 @@ function hideSearch() {
     wrapper.style.visibility = "hidden";
     input.value = "";
     output.innerHTML = "";
-    document.activeElement.blur();
+    if (
+      previouslyFocused &&
+      typeof previouslyFocused.focus === "function" &&
+      document.contains(previouslyFocused)
+    ) {
+      previouslyFocused.focus();
+    } else if (document.activeElement) {
+      document.activeElement.blur();
+    }
+    previouslyFocused = null;
     searchVisible = false;
   }
 }

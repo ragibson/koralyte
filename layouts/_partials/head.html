@@ -103,6 +103,7 @@
 	{{ $jsResources = $jsResources | append (resources.Get "js/code.js") }}
 {{ end }}
 
+{{ $jsResources = $jsResources | append (resources.Get "js/menu-a11y.js") }}
 {{ $jsResources = $jsResources | append (resources.Get "js/katex-render.js") }}
 {{ $jsResources = $jsResources | append (resources.Get "js/print-support.js") }}
 {{ $jsResources = $jsResources | append (resources.Get "js/email.js") }}

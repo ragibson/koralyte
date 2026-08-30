@@ -31,8 +31,12 @@ list:
   no_articles: "There are no articles to list here yet."
 
 nav:
+  close_menu: "Close menu"
+  main_menu: "Main menu"
+  mobile_menu: "Mobile menu"
   scroll_to_top_title: "Scroll to top"
   skip_to_main: "Skip to main content"
+  toggle_submenu: "Toggle submenu"
 
 search:
   open_button_title: "Search (/)"
