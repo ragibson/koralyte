@@ -5,3 +5,6 @@ layouts/
 assets/css/compiled/
 assets/lib/
 pnpm-lock.yaml
+
+# this contains Go template syntax, so it's not actually valid JS
+assets/js/appearance.js
