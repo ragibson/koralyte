@@ -1,3 +1,8 @@
+# File explicitly tagged for git ignore
+*_gitignore.*
+*-gitignore.*
+*-gitignore/
+
 # Node modules from build process
 node_modules/
 
