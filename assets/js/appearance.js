@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   if (switcher) {
     switcher.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
+      toggleDark();
       var targetAppearance = getTargetAppearance();
       localStorage.setItem("appearance", targetAppearance);
       updateMeta();
@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
   if (switcherMobile) {
     switcherMobile.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
+      toggleDark();
       var targetAppearance = getTargetAppearance();
       localStorage.setItem("appearance", targetAppearance);
       updateMeta();
@@ -91,4 +91,11 @@ var updateMeta = () => {
 
 var getTargetAppearance = () => {
   return document.documentElement.classList.contains("dark") ? "dark" : "light";
+};
+
+var toggleDark = () => {
+  document.documentElement.classList.add("no-transitions");
+  document.documentElement.classList.toggle("dark");
+  void document.documentElement.offsetHeight; // force reflow to guarantee theme switches before transitions return
+  document.documentElement.classList.remove("no-transitions");
 };
