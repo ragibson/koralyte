@@ -5,7 +5,7 @@
 - Hugo Extended v0.158.0+
 - Node.js 22+
 - pnpm 11+
-- Go 1.22+
+- Go 1.26+
 
 ## Rebuild process
 
@@ -32,6 +32,9 @@ gotmplfmt is a standalone CLI, so it has to be installed separately (it is not m
 ```bash
 go install github.com/gohugoio/gotmplfmt@latest
 ```
+
+For local development, this will need to be updated periodically by rerunning this command if newer releases break in CI
+runs.
 
 For now, gotmplfmt does not sort Tailwind classes inside `layouts/` (unlike `prettier-plugin-tailwindcss` in JS/CSS
 files), so we should try keeping class ordering in the templates reasonably consistent by hand.

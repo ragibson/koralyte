@@ -16,7 +16,7 @@
     "format": "prettier --write . && gotmplfmt -w layouts",
     "format:check": "pnpm run format:check:prettier && pnpm run format:check:gotmplfmt",
     "format:check:prettier": "prettier --check .",
-    "format:check:gotmplfmt": "test -z \"$(gotmplfmt -l layouts)\""
+    "format:check:gotmplfmt": "files=$(gotmplfmt -l layouts); echo \"$files\"; test -z \"$files\""
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "katex": "^0.18.7",
     "lite-youtube-embed": "^0.3.4",
     "medium-zoom": "^1.1.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "vendor": [
