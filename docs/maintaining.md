@@ -20,6 +20,15 @@ pnpm format:check  # check formatting (for CI)
 Occasionally, we want to run `pnpm outdated` to see if any packages have major updates. These require manual testing and
 tweaks.
 
+## Security
+
+In general, we'd like to keep dependencies to a minimum. It's also best to audit the dependencies periodically.
+
+```
+pnpm audit
+pnpm audit --fix
+```
+
 ## Code formatting
 
 Koralyte uses two formatters:
@@ -93,15 +102,6 @@ The Go version in the module should be kept up to date with the rest of the docu
 
 ```
 hugo mod get github.com/ragibson/koralyte
-```
-
-## Security
-
-In general, we'd like to keep dependencies to a minimum. It's also best to audit the dependencies periodically.
-
-```
-pnpm audit
-pnpm audit --fix
 ```
 
 ## GitHub Actions

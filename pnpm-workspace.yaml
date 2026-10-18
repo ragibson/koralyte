@@ -1,2 +1,5 @@
 allowBuilds:
   "@parcel/watcher": true
+overrides:
+  postcss-selector-parser@<7.1.6: ^7.1.6
+  source-map-js@>=1.0.0 <1.2.2: ^1.2.2
