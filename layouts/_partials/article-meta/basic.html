@@ -18,9 +18,9 @@
 		{{ $showDateUpdated = partial "functions/param.html" (dict "params" .Params "key" "showDateUpdated" "default" $showDateUpdated) }}
 		{{ if and $showDateUpdated (ne (partial
 			"functions/date.html" .Date
-			)
+		)
 			(partial "functions/date.html" .Lastmod)
-			)
+		)
 			(gt (.Lastmod | time.Format "2006") 1)
 		}}
 			{{ $parts = $parts | append (partial "meta/date-updated.html" .Lastmod) }}
