@@ -37,7 +37,7 @@ Renders a menu for the given menu ID.
 		<a
 			{{- range $k, $v := $attrs }}
 				{{- with $v }}
-					{{- printf " %s=%q" $k $v | safeHTMLAttr }}
+				{{- printf " %s=%q" $k $v | safeHTMLAttr }}
 				{{- end }}
 			{{- end -}}>{{ $name }}</a>
 		{{- with .Children }}

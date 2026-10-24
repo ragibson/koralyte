@@ -82,71 +82,71 @@
 	{{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify }}
   <script>{{ $jsAppearance.Content | safeJS }}</script>
 
-	{{/* Inlined since deferring causes reflow issues. It is possible that a more sophisticated defer would work. */}}
-	{{ if not $disableImageZoom }}
-		{{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Minify }}
+{{/* Inlined since deferring causes reflow issues. It is possible that a more sophisticated defer would work. */}}
+{{ if not $disableImageZoom }}
+	{{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Minify }}
     <script>{{ $zoomJS.Content | safeJS }}</script>
-	{{ end }}
+{{ end }}
 
-	{{/* JS deferred */}}
-	{{ $jsResources := slice }}
-	{{ $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) }}
-	{{ if $showScrollToTop }}
-		{{ $jsResources = $jsResources | append (resources.Get "js/scroll-to-top.js") }}
-	{{ end }}
-	{{ if site.Params.enableSearch | default false }}
-		{{ $fuseRaw := resources.Get "lib/fuse/fuse.min.cjs" }}
-		{{ $fuse := resources.FromString "lib/fuse/fuse.min.js" (replace $fuseRaw.Content "module.exports=" "window.Fuse=") }}
-		{{ $jsResources = $jsResources | append $fuse | append (resources.Get "js/search.js") }}
-	{{ end }}
-	{{ if site.Params.enableCodeCopy | default false }}
-		{{ $jsResources = $jsResources | append (resources.Get "js/code.js") }}
-	{{ end }}
+{{/* JS deferred */}}
+{{ $jsResources := slice }}
+{{ $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) }}
+{{ if $showScrollToTop }}
+	{{ $jsResources = $jsResources | append (resources.Get "js/scroll-to-top.js") }}
+{{ end }}
+{{ if site.Params.enableSearch | default false }}
+	{{ $fuseRaw := resources.Get "lib/fuse/fuse.min.cjs" }}
+	{{ $fuse := resources.FromString "lib/fuse/fuse.min.js" (replace $fuseRaw.Content "module.exports=" "window.Fuse=") }}
+	{{ $jsResources = $jsResources | append $fuse | append (resources.Get "js/search.js") }}
+{{ end }}
+{{ if site.Params.enableCodeCopy | default false }}
+	{{ $jsResources = $jsResources | append (resources.Get "js/code.js") }}
+{{ end }}
 
-	{{ $jsResources = $jsResources | append (resources.Get "js/menu-a11y.js") }}
-	{{ $jsResources = $jsResources | append (resources.Get "js/katex-render.js") }}
-	{{ $jsResources = $jsResources | append (resources.Get "js/print-support.js") }}
-	{{ $jsResources = $jsResources | append (resources.Get "js/email.js") }}
-	{{ if $jsResources }}
-		{{ $bundleJS := $jsResources | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint $alg }}
+{{ $jsResources = $jsResources | append (resources.Get "js/menu-a11y.js") }}
+{{ $jsResources = $jsResources | append (resources.Get "js/katex-render.js") }}
+{{ $jsResources = $jsResources | append (resources.Get "js/print-support.js") }}
+{{ $jsResources = $jsResources | append (resources.Get "js/email.js") }}
+{{ if $jsResources }}
+	{{ $bundleJS := $jsResources | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint $alg }}
     <script
-			defer
-			type="text/javascript"
-			id="script-bundle"
-			src="{{ $bundleJS.RelPermalink }}"
-			integrity="{{ $bundleJS.Data.Integrity }}"
-			data-copy="{{ i18n "code.copy" }}"
-			data-copied="{{ i18n "code.copied" }}"></script>
-	{{ end }}
+		defer
+		type="text/javascript"
+		id="script-bundle"
+		src="{{ $bundleJS.RelPermalink }}"
+		integrity="{{ $bundleJS.Data.Integrity }}"
+		data-copy="{{ i18n "code.copy" }}"
+		data-copied="{{ i18n "code.copied" }}"></script>
+{{ end }}
 
-	{{/* Conditional loaded resources */}}
-	{{ partial "vendor.html" . }}
+{{/* Conditional loaded resources */}}
+{{ partial "vendor.html" . }}
 
-	{{/* Icons */}}
-	{{- if fileExists "static/apple-touch-icon.png" }}
-		<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-	{{- end }}
-	{{- if fileExists "static/favicon-32x32.png" }}
-		<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-	{{- end }}
-	{{- if fileExists "static/favicon-16x16.png" }}
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-	{{- end }}
-	{{- if fileExists "static/site.webmanifest" }}
-		<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
-	{{- end }}
+{{/* Icons */}}
+{{- if fileExists "static/apple-touch-icon.png" }}
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+{{- end }}
+{{- if fileExists "static/favicon-32x32.png" }}
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+{{- end }}
+{{- if fileExists "static/favicon-16x16.png" }}
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+{{- end }}
+{{- if fileExists "static/site.webmanifest" }}
+	<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+{{- end }}
 
-	{{/* Schema */}}
-	{{ partial "schema.html" . }}
+{{/* Schema */}}
+{{ partial "schema.html" . }}
 
-	{{/* Analytics */}}
-	{{ if hugo.IsProduction }}
-		{{ partialCached "analytics/main.html" . "analytics" }}
-	{{ end }}
+{{/* Analytics */}}
+{{ if hugo.IsProduction }}
+	{{ partialCached "analytics/main.html" . "analytics" }}
+{{ end }}
 
-	{{/* Extend head */}}
-	{{ if templates.Exists "_partials/extend-head.html" }}
-		{{ partial "extend-head.html" . }}
-	{{ end }}
+{{/* Extend head */}}
+{{ if templates.Exists "_partials/extend-head.html" }}
+	{{ partial "extend-head.html" . }}
+{{ end }}
 
 </head>
