@@ -1,6 +1,13 @@
 name: Build test
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   hugo-build:
@@ -9,11 +16,12 @@ jobs:
       matrix:
         hugo-version: ["0.158.0", "latest"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: corepack enable
+          cache: pnpm
       - run: pnpm install --frozen-lockfile
       - uses: peaceiris/actions-hugo@v3
         with:

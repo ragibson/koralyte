@@ -1,16 +1,24 @@
 name: Generated files up to date
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   css-up-to-date:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: corepack enable
+          cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: git diff --exit-code -- assets/css/compiled/main.css
@@ -18,15 +26,16 @@ jobs:
   vendor-up-to-date:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
+          cache: pnpm
       - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: "latest"
           extended: true
-      - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm assets
       - run: git diff --exit-code -- assets/lib
@@ -34,14 +43,15 @@ jobs:
   format-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - uses: actions/setup-go@v5
+          cache: pnpm
+      - uses: actions/setup-go@v7
         with:
           go-version: "1.26"
       - run: go install github.com/gohugoio/gotmplfmt@latest
-      - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm run format:check
