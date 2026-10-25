@@ -59,7 +59,6 @@ enableEmoji = true
   endLevel = 4
 
 [params]
-  colorScheme = 'koralyte'
   defaultAppearance = 'light'
   autoSwitchAppearance = true
   enableSearch = true

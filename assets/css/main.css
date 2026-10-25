@@ -1,10 +1,52 @@
 /*! Koralyte | MIT License | https://github.com/ragibson/koralyte */
 
-@config "../../tailwind.config.js";
-
 @import "tailwindcss";
 @import "../lib/chroma/chroma.css" layer(utilities);
 @import "./components/chroma-layout.css" layer(utilities);
+
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Gray */
+  --color-neutral: #ffffff;
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Blue */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  /* Cyan */
+  --color-secondary-50: #ecfeff;
+  --color-secondary-100: #cffafe;
+  --color-secondary-200: #a5f3fc;
+  --color-secondary-300: #67e8f9;
+  --color-secondary-400: #22d3ee;
+  --color-secondary-500: #06b6d4;
+  --color-secondary-600: #0891b2;
+  --color-secondary-700: #0e7490;
+  --color-secondary-800: #155e75;
+  --color-secondary-900: #164e63;
+}
 
 html:not(.dark) {
   color-scheme: light;
@@ -197,7 +239,7 @@ pre {
 }
 
 /* TODO: consider a redesign, this could look bad on extremely thin devices */
-@variant max-md {
+@media (width < 48rem) {
   .thumbnail {
     width: 100%;
   }
@@ -292,7 +334,7 @@ body:has(#mobile-menu-toggle:checked) {
 }
 
 /* Reset body position for desktop after it was modified on mobile */
-@media (min-width: 853px) {
+@media (min-width: 48rem) {
   body:has(#mobile-menu-toggle:checked) {
     overflow: visible;
   }
@@ -325,4 +367,185 @@ body:has(#mobile-menu-toggle:checked) {
   text-decoration-line: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 4px;
+}
+
+/* Legacy prose theming from typography plugin */
+.prose {
+  --tw-prose-body: var(--color-neutral-700);
+  --tw-prose-headings: var(--color-neutral-800);
+  --tw-prose-lead: var(--color-neutral-500);
+  --tw-prose-links: var(--color-primary-600);
+  --tw-prose-bold: inherit;
+  --tw-prose-counters: var(--color-neutral-800);
+  --tw-prose-bullets: var(--color-neutral-500);
+  --tw-prose-quotes: var(--color-neutral-700);
+  --tw-prose-quote-borders: var(--color-primary-500);
+  --tw-prose-captions: var(--color-neutral-500);
+  --tw-prose-code: var(--color-secondary-700);
+  --tw-prose-pre-code: var(--color-neutral-700);
+  --tw-prose-pre-bg: var(--color-neutral-50);
+  --tw-prose-th-borders: var(--color-neutral-500);
+  --tw-prose-td-borders: var(--color-neutral-300);
+}
+
+.prose-invert,
+.dark .prose {
+  --tw-prose-body: var(--color-neutral-300);
+  --tw-prose-headings: var(--color-neutral-50);
+  --tw-prose-lead: var(--color-neutral-500);
+  --tw-prose-links: var(--color-primary-400);
+  --tw-prose-bold: var(--color-neutral);
+  --tw-prose-counters: var(--color-neutral-400);
+  --tw-prose-bullets: var(--color-neutral-600);
+  --tw-prose-quotes: var(--color-neutral-200);
+  --tw-prose-quote-borders: var(--color-primary-600);
+  --tw-prose-captions: var(--color-neutral-400);
+  --tw-prose-code: var(--color-secondary-400);
+  --tw-prose-pre-code: var(--color-neutral-200);
+  --tw-prose-pre-bg: var(--color-neutral-700);
+  --tw-prose-th-borders: var(--color-neutral-500);
+  --tw-prose-td-borders: var(--color-neutral-700);
+}
+
+.prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-decoration: none;
+  text-decoration-color: var(--color-primary-300);
+  font-weight: 500;
+
+  &:hover {
+    color: var(--color-primary-600);
+    text-decoration: none;
+    border-radius: 0.09rem;
+  }
+}
+
+.prose
+  :where(a.active, p.active):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-primary-600);
+}
+
+.prose
+  :where(a code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--tw-prose-code);
+}
+
+.prose :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border: 0.8px solid var(--color-neutral-300);
+}
+
+.prose :where(kbd):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--color-neutral-200);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.prose :where(mark):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--color-neutral-800);
+  background-color: var(--color-primary-600);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.25rem;
+}
+
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 0.25rem;
+}
+
+.prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::before {
+  display: none;
+}
+
+.prose
+  :where(code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::after {
+  display: none;
+}
+
+.prose
+  :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *))::before {
+  display: none;
+}
+
+.prose
+  :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  display: none;
+}
+
+.prose-invert
+  :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.dark
+  .prose
+  :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  text-decoration-color: var(--color-neutral-600);
+
+  &:hover {
+    color: var(--color-primary-400);
+  }
+}
+
+.prose-invert
+  :where(a.active, p.active):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ),
+.dark
+  .prose
+  :where(a.active, p.active):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  text-decoration-color: var(--color-primary-400);
+}
+
+.prose-invert
+  :where(kbd):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.dark
+  .prose
+  :where(kbd):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  color: var(--color-neutral-200);
+  background-color: var(--color-neutral-700);
+}
+
+.prose-invert
+  :where(mark):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.dark
+  .prose
+  :where(mark):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  background-color: var(--color-primary-400);
+}
+
+.prose-invert
+  :where(code):not(pre code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ),
+.dark
+  .prose
+  :where(code):not(pre code):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  background-color: color-mix(
+    in srgb,
+    var(--color-neutral-900) 70%,
+    transparent
+  );
+}
+
+.prose-invert
+  :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+.dark
+  .prose
+  :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  border: 0.8px solid var(--color-neutral-500);
 }

@@ -60,9 +60,6 @@
 
 	{{/* CSS */}}
 	{{ $cssResources := slice }}
-	{{ $schemeName := site.Params.colorScheme | default "koralyte" }}
-	{{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower $schemeName)) | default (resources.Get "css/schemes/koralyte.css") }}
-	{{ $cssResources = $cssResources | append $cssScheme }}
 	{{ $cssResources = $cssResources | append (resources.Get "css/compiled/main.css") }}
 	{{ with resources.Get "css/custom.css" }}
 		{{ $cssResources = $cssResources | append . }}

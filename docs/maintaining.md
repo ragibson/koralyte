@@ -130,8 +130,7 @@ koralyte/
 │   ├── css/
 │   │   ├── compiled/      # (automatic) generated main.css
 │   │   ├── components/    # code block layout styles (chroma-layout.css)
-│   │   ├── schemes/       # color schemes
-│   │   └── main.css       # Tailwind and theme styling rules
+│   │   └── main.css       # Tailwind config and theme styling rules
 │   ├── icons/             # SVG icons (social and theme UI)
 │   ├── js/                # theme javascript utilities
 │   └── lib/               # (automatic) vendored libraries and generated Chroma CSS
@@ -157,7 +156,6 @@ koralyte/
 ├── go.mod                 # Hugo module path
 ├── hugo.toml              # theme defaults
 ├── theme.toml             # Hugo theme metadata
-├── tailwind.config.js     # Tailwind v4 config (uses @config shim)
 ├── package.json           # pnpm scripts and setup
 ├── pnpm-workspace.yaml    # pnpm workspace settings
 ├── .npmrc                 # enforces the Node/pnpm engine versions in package.json

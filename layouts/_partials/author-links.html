@@ -1,5 +1,5 @@
 {{ with site.Params.Author.links }}
-	<div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+	<div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 gap-2">
 		{{ range $links := . }}
 			{{ range $name, $url := $links }}
 				{{ $isEmail := eq $name "email" }}
