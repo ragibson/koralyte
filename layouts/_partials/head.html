@@ -25,10 +25,11 @@
 	{{ with .Params.Tags | default site.Params.keywords }}
 		<meta name="keywords" content="{{ range . }}{{ . }},{{ end }}">
 	{{ end }}
-	{{ with site.Params.robots }}
-		<meta name="robots" content="{{ . }}">
+	{{ $robots := .Params.robots | default site.Params.robots }}
+	{{ if in (slice "taxonomy" "term") .Kind }}
+		{{ $robots = "noindex, follow" }}
 	{{ end }}
-	{{ with .Params.robots }}
+	{{ with $robots }}
 		<meta name="robots" content="{{ . }}">
 	{{ end }}
 	<link rel="canonical" href="{{ .Permalink }}">
