@@ -17,8 +17,20 @@ have to explicitly enable this, e.g.,
   _merge = "shallow"
 ```
 
-It seems like Hugo will not merge the root-level settings (`baseURL`, `summaryLength`, and
-so on), so those must be site in your site configuration.
+## Root-level site settings
+
+Copy these directly into your site configuration. Hugo will not use them by default.
+
+| Key                      | Recommended default | Description                              |
+| ------------------------ | ------------------- | ---------------------------------------- |
+| `baseURL`                | Your site's URL     | Absolute URL of your site.               |
+| `defaultContentLanguage` | `"en"`              | Default content language.                |
+| `enableRobotsTXT`        | `true`              | Whether to generate `robots.txt`.        |
+| `enableEmoji`            | `true`              | Enable emoji shorthand in content.       |
+| `summaryLength`          | `0`                 | Automatic summary length (disabled if 0) |
+
+TODO: consider moving these into params where possible? Some of these are root-level for
+legacy reasons only.
 
 ## `[params]`
 
@@ -38,12 +50,8 @@ so on), so those must be site in your site configuration.
 | `keywords`                      | -           | Site meta keywords and schema keywords.                                                                  |
 | `robots`                        | -           | Site-level robots meta tag.                                                                              |
 | `smartTOC`                      | `true`      | Use smart table of contents that scrolls with the page.                                                  |
-| `summaryLength`                 | `0`         | Auto-summary word count (`0` = disable auto summaries; use front matter `summary` instead).              |
 | `smartTOCHideUnfocusedChildren` | `false`     | Collapse inactive nested table-of-contents entries.                                                      |
 | `showAppearanceSwitcher`        | `true`      | Show light/dark mode toggle in header.                                                                   |
-
-TODO: actually `summaryLength` is not part of params? We should fix and/or properly document
-this eventually along with the other root-level settings.
 
 ## `[params.footer]`
 
