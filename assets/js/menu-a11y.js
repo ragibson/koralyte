@@ -3,40 +3,32 @@
 
   function syncCheckboxLabels(checkbox) {
     var expanded = checkbox.checked ? "true" : "false";
-    document
-      .querySelectorAll('label[role="button"][for="' + checkbox.id + '"]')
-      .forEach(function (label) {
-        label.setAttribute("aria-expanded", expanded);
-      });
+    document.querySelectorAll('label[role="button"][for="' + checkbox.id + '"]').forEach(function (label) {
+      label.setAttribute("aria-expanded", expanded);
+    });
   }
 
   function setupCheckboxLabels() {
     var seen = {};
-    document
-      .querySelectorAll('label[role="button"][for]')
-      .forEach(function (label) {
-        var checkbox = document.getElementById(label.getAttribute("for"));
-        if (!checkbox || checkbox.type !== "checkbox") return;
+    document.querySelectorAll('label[role="button"][for]').forEach(function (label) {
+      var checkbox = document.getElementById(label.getAttribute("for"));
+      if (!checkbox || checkbox.type !== "checkbox") return;
 
-        label.addEventListener("keydown", function (event) {
-          if (
-            event.key === "Enter" ||
-            event.key === " " ||
-            event.key === "Spacebar"
-          ) {
-            event.preventDefault();
-            label.click();
-          }
-        });
-
-        if (!seen[checkbox.id]) {
-          seen[checkbox.id] = true;
-          checkbox.addEventListener("change", function () {
-            syncCheckboxLabels(checkbox);
-          });
-          syncCheckboxLabels(checkbox);
+      label.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
+          event.preventDefault();
+          label.click();
         }
       });
+
+      if (!seen[checkbox.id]) {
+        seen[checkbox.id] = true;
+        checkbox.addEventListener("change", function () {
+          syncCheckboxLabels(checkbox);
+        });
+        syncCheckboxLabels(checkbox);
+      }
+    });
   }
 
   function setupMobileMenuEscape() {
@@ -46,9 +38,7 @@
       if (event.key === "Escape" && toggle.checked) {
         toggle.checked = false;
         syncCheckboxLabels(toggle);
-        var opener = document.querySelector(
-          'label[role="button"][for="mobile-menu-toggle"]',
-        );
+        var opener = document.querySelector('label[role="button"][for="mobile-menu-toggle"]');
         if (opener) opener.focus();
       }
     });

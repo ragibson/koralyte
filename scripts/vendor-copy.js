@@ -4,9 +4,7 @@ const { join, dirname } = require("node:path");
 const root = join(__dirname, "..");
 
 async function main() {
-  const { vendor } = JSON.parse(
-    await readFile(join(root, "package.json"), "utf-8"),
-  );
+  const { vendor } = JSON.parse(await readFile(join(root, "package.json"), "utf-8"));
 
   for (const { from, to } of vendor) {
     const dest = join(root, to);

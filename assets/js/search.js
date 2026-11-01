@@ -15,9 +15,7 @@ var previouslyFocused = null;
 
 // Listen for events
 showButton ? showButton.addEventListener("click", displaySearch) : null;
-showButtonMobile
-  ? showButtonMobile.addEventListener("click", displaySearch)
-  : null;
+showButtonMobile ? showButtonMobile.addEventListener("click", displaySearch) : null;
 hideButton.addEventListener("click", hideSearch);
 wrapper.addEventListener("click", hideSearch);
 modal.addEventListener("click", function (event) {
@@ -30,8 +28,7 @@ document.addEventListener("keydown", function (event) {
   if (event.key == "/") {
     const active = document.activeElement;
     const tag = active.tagName;
-    const isInputField =
-      tag === "INPUT" || tag === "TEXTAREA" || active.isContentEditable;
+    const isInputField = tag === "INPUT" || tag === "TEXTAREA" || active.isContentEditable;
 
     if (!searchVisible && !isInputField) {
       event.preventDefault();
@@ -46,9 +43,7 @@ document.addEventListener("keydown", function (event) {
 
   // Keep keyboard focus inside the open modal.
   if (event.key == "Tab" && searchVisible) {
-    var focusable = modal.querySelectorAll(
-      'a[href], button, input, [tabindex="0"]',
-    );
+    var focusable = modal.querySelectorAll('a[href], button, input, [tabindex="0"]');
     if (focusable.length > 0) {
       var firstFocusable = focusable[0];
       var lastFocusable = focusable[focusable.length - 1];
@@ -130,11 +125,7 @@ function hideSearch() {
     wrapper.style.visibility = "hidden";
     input.value = "";
     output.innerHTML = "";
-    if (
-      previouslyFocused &&
-      typeof previouslyFocused.focus === "function" &&
-      document.contains(previouslyFocused)
-    ) {
+    if (previouslyFocused && typeof previouslyFocused.focus === "function" && document.contains(previouslyFocused)) {
       previouslyFocused.focus();
     } else if (document.activeElement) {
       document.activeElement.blur();
