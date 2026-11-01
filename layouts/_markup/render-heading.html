@@ -1,4 +1,12 @@
-{{ $anchor := anchorize .Anchor }}
+{{ $anchor := .Anchor }}
+{{/* Calculate "slug" needed for heading anchors when the text contains KaTeX. */}}
+{{ if in .Text `\(` }}
+	{{ $source := index (split (readFile .Position.Filename) "\n") (sub .Position.LineNumber 1) }}
+	{{ if not (findRE `\{[^{}]*(?:#|\bid\s*=)[^{}]*\}` $source) }}
+		{{ $anchor = anchorize (.Text | plainify | htmlUnescape) }}
+		{{ .Page.Store.SetInMap "mathHeadingAnchors" .Anchor $anchor }}
+	{{ end }}
+{{ end }}
 <h{{ .Level }} class="relative group">{{ .Text | safeHTML }}
 	<span id="{{ $anchor }}" class="anchor"></span>
 	{{ $showHeadingAnchors := partial "functions/param.html" (dict "params" site.Params.article "key" "showHeadingAnchors" "default" true) }}

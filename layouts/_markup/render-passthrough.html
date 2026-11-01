@@ -1,0 +1,11 @@
+{{/* Standard Hugo render passthrough hook but with HACK for smart quotes in KaTeX flat \text{} blocks. */}}
+{{- $inner := .Inner -}}
+{{- range findRE `\\text\{[^{}]*\}` $inner -}}
+	{{- $text := replaceRE `(^|[^\\])"([^"\\\r\n]+)"` "${1}“${2}”" . -}}
+	{{- $inner = replace $inner . $text -}}
+{{- end -}}
+{{- if eq .Type "block" -}}
+	{{- printf "$$%s$$" $inner | htmlEscape | safeHTML -}}
+{{- else -}}
+	{{- printf `\(%s\)` $inner | htmlEscape | safeHTML -}}
+{{- end -}}
