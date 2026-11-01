@@ -1,9 +1,24 @@
 # Koralyte configuration settings
 
 The default configuration is provided in [hugo.toml](../hugo.toml). Override it in your site's
-`config/_default/params.toml`.
+`hugo.toml` or `config` directory.
 
 A description of most options is provided below.
+
+If you want to use the theme defaults without copying them into your site configuration, Hugo
+will merge `params` deeply and `menus` shallowly by default. For other categories, you would
+have to explicitly enable this, e.g.,
+
+```toml
+[markup]
+  _merge = "deep"
+
+[imaging]
+  _merge = "shallow"
+```
+
+It seems like Hugo will not merge the root-level settings (`baseURL`, `summaryLength`, and
+so on), so those must be site in your site configuration.
 
 ## `[params]`
 
@@ -12,7 +27,7 @@ A description of most options is provided below.
 | `defaultAppearance`             | `"light"`   | Default website to `"light"` or `"dark"` mode.                                                           |
 | `autoSwitchAppearance`          | `true`      | Follow OS dark mode preference, if provided by the browser.                                              |
 | `enableSearch`                  | `true`      | Enable client-side search bar.                                                                           |
-| `enableCodeCopy`                | `false`     | Enable copy buttons on code blocks.                                                                      |
+| `enableCodeCopy`                | `true`      | Enable copy buttons on code blocks.                                                                      |
 | `disableImageOptimization`      | `true`      | Skip Hugo's build-time image processing (we default to true as the best default for scientific figures). |
 | `disableImageZoom`              | `false`     | Disable zoom-to-click on images.                                                                         |
 | `disableTextInHeader`           | `false`     | Hide site title text in the site header.                                                                 |
@@ -22,12 +37,15 @@ A description of most options is provided below.
 | `description`                   | -           | Site meta description and schema description.                                                            |
 | `keywords`                      | -           | Site meta keywords and schema keywords.                                                                  |
 | `robots`                        | -           | Site-level robots meta tag.                                                                              |
-| `smartTOC`                      | `false`     | Use smart table of contents that scrolls with the page.                                                  |
+| `smartTOC`                      | `true`      | Use smart table of contents that scrolls with the page.                                                  |
 | `summaryLength`                 | `0`         | Auto-summary word count (`0` = disable auto summaries; use front matter `summary` instead).              |
 | `smartTOCHideUnfocusedChildren` | `false`     | Collapse inactive nested table-of-contents entries.                                                      |
 | `showAppearanceSwitcher`        | `true`      | Show light/dark mode toggle in header.                                                                   |
 
-## `[footer]`
+TODO: actually `summaryLength` is not part of params? We should fix and/or properly document
+this eventually along with the other root-level settings.
+
+## `[params.footer]`
 
 | Key                    | Default | Description                      |
 | ---------------------- | ------- | -------------------------------- |
@@ -36,7 +54,7 @@ A description of most options is provided below.
 | `showThemeAttribution` | `true`  | Show "Hugo & theme" attribution. |
 | `showScrollToTop`      | `true`  | Show scroll-to-top button.       |
 
-## `[homepage]`
+## `[params.homepage]`
 
 | Key                | Default     | Description                                |
 | ------------------ | ----------- | ------------------------------------------ |
@@ -45,12 +63,12 @@ A description of most options is provided below.
 | `showMoreLink`     | `false`     | Include "show more" link on homepage.      |
 | `showMoreLinkDest` | `"/posts/"` | Destination of "show more" link.           |
 
-## `[article]`
+## `[params.article]`
 
 | Key                       | Default | Description                                 |
 | ------------------------- | ------- | ------------------------------------------- |
 | `showDate`                | `true`  | Show publication date.                      |
-| `showDateUpdated`         | `false` | Show last-updated date.                     |
+| `showDateUpdated`         | `true`  | Show last-updated date.                     |
 | `showAuthor`              | `true`  | Show author info in article.                |
 | `showDraftLabel`          | `true`  | Show "Draft" badge on draft articles.       |
 | `showHeadingAnchors`      | `true`  | Show anchor links on headings.              |
@@ -58,26 +76,26 @@ A description of most options is provided below.
 | `invertPagination`        | `false` | Reverse previous/next order.                |
 | `showReadingTime`         | `true`  | Show estimated reading time.                |
 | `readingSpeed`            | `200`   | Words per minute for reading time estimate. |
-| `showTableOfContents`     | `false` | Show table of contents in articles.         |
-| `showTaxonomies`          | `false` | Show taxonomy terms (tags) in articles.     |
-| `showRelatedContent`      | `false` | Show related articles at end of post.       |
+| `showTableOfContents`     | `true`  | Show table of contents in articles.         |
+| `showTaxonomies`          | `true`  | Show taxonomy terms (tags) in articles.     |
+| `showRelatedContent`      | `true`  | Show related articles at end of post.       |
 | `relatedContentLimit`     | `3`     | Max number of related articles to show.     |
 | `externalLinkForceNewTab` | `true`  | Open external links in a new tab.           |
 
-## `[list]`
+## `[params.list]`
 
 | Key           | Default | Description                         |
 | ------------- | ------- | ----------------------------------- |
-| `showSummary` | `false` | Show content summary in list views. |
-| `showCards`   | `false` | Display list items as cards.        |
+| `showSummary` | `true`  | Show content summary in list views. |
+| `showCards`   | `true`  | Display list items as cards.        |
 
-## `[taxonomy]` / `[term]`
+## `[params.taxonomy]` / `[params.term]`
 
 | Key                      | Default | Description                                     |
 | ------------------------ | ------- | ----------------------------------------------- |
 | `taxonomy.showTermCount` | `true`  | Show number of items per term in taxonomy list. |
 
-## `[sitemap]`
+## `[params.sitemap]`
 
 | Key             | Default                | Description                            |
 | --------------- | ---------------------- | -------------------------------------- |

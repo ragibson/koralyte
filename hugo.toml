@@ -1,13 +1,14 @@
 # -- Theme Configuration for Koralyte --
-[module]
-  [module.hugoVersion]
-    extended = true
-    min = '0.158.0'
-
+# baseURL = "https://your-domain-and-tld/"
 defaultContentLanguage = 'en'
 enableRobotsTXT = true
 summaryLength = 0
 enableEmoji = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = '0.158.0'
 
 [pagination]
   pagerSize = 10
@@ -37,35 +38,36 @@ enableEmoji = true
     name = 'tags'
     weight = 100
 
-[goldmark]
-  [goldmark.parser]
-    wrapStandAloneImageWithinParagraph = false
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
 
-    [goldmark.parser.attribute]
-      block = true
+      [markup.goldmark.parser.attribute]
+        block = true
 
-  [goldmark.renderer]
-    unsafe = true
+    [markup.goldmark.renderer]
+      unsafe = true
 
-  [goldmark.extensions]
-    [goldmark.extensions.passthrough]
-      enable = true
-      [goldmark.extensions.passthrough.delimiters]
-        block = [['\\[', '\\]'], ['$$', '$$']]
-        inline = [['\\(', '\\)']]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
 
-[highlight]
-  noClasses = false
+  [markup.highlight]
+    noClasses = false
 
-[tableOfContents]
-  startLevel = 2
-  endLevel = 4
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
 
 [params]
   defaultAppearance = 'light'
   autoSwitchAppearance = true
   enableSearch = true
-  enableCodeCopy = false
+  enableCodeCopy = true
   disableImageOptimization = true
   disableImageZoom = false
   disableTextInHeader = false
@@ -73,6 +75,7 @@ enableEmoji = true
   fingerprintAlgorithm = 'sha512'
   mainSections = ['posts']
   showAppearanceSwitcher = true
+  smartTOC = true
 
   [params.footer]
     showMenu = true
@@ -88,7 +91,7 @@ enableEmoji = true
 
   [params.article]
     showDate = true
-    showDateUpdated = false
+    showDateUpdated = true
     showAuthor = true
     showDraftLabel = true
     showHeadingAnchors = true
@@ -96,15 +99,15 @@ enableEmoji = true
     invertPagination = false
     showReadingTime = true
     readingSpeed = 200
-    showTableOfContents = false
-    showTaxonomies = false
-    showRelatedContent = false
+    showTableOfContents = true
+    showTaxonomies = true
+    showRelatedContent = true
     relatedContentLimit = 3
     externalLinkForceNewTab = true
 
   [params.list]
-    showSummary = false
-    showCards = false
+    showSummary = true
+    showCards = true
 
   [params.sitemap]
     excludedKinds = ['taxonomy', 'term']

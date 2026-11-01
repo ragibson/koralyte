@@ -61,7 +61,7 @@ hugo server
 The default configuration is provided in [hugo.toml](hugo.toml). Override it in your site's `hugo.toml` or `config`
 directory.
 
-See [docs/configuration.md](docs/configuration.md) for a complete reference of the theme's configuration options.
+See [docs/configuration.md](docs/configuration.md) for details on using the theme's configuration options.
 
 ## Development
 
