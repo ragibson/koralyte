@@ -1,13 +1,12 @@
 # Koralyte configuration settings
 
-The default configuration is provided in [hugo.toml](../hugo.toml). Override it in your site's
-`hugo.toml` or `config` directory.
+The default configuration is provided in [hugo.toml](../hugo.toml). Override it in your site's `hugo.toml` or `config`
+directory.
 
 A description of most options is provided below.
 
-If you want to use the theme defaults without copying them into your site configuration, Hugo
-will merge `params` deeply and `menus` shallowly by default. For other categories, you would
-have to explicitly enable this, e.g.,
+If you want to use the theme defaults without copying them into your site configuration, Hugo will merge `params` deeply
+and `menus` shallowly by default. For other categories, you would have to explicitly enable this, e.g.,
 
 ```toml
 [markup]
@@ -29,8 +28,7 @@ Copy these directly into your site configuration. Hugo will not use them by defa
 | `enableEmoji`            | `true`              | Enable emoji shorthand in content.       |
 | `summaryLength`          | `0`                 | Automatic summary length (disabled if 0) |
 
-TODO: consider moving these into params where possible? Some of these are root-level for
-legacy reasons only.
+TODO: consider moving these into params where possible? Some of these are root-level for legacy reasons only.
 
 ## `[params]`
 
