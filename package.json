@@ -34,13 +34,13 @@
   },
   "homepage": "https://github.com/ragibson/koralyte#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/cli": "^4.3.5",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/typography": "^0.5.20",
     "fuse.js": "^7.5.0",
     "katex": "^0.19.1",
     "lite-youtube-embed": "^0.3.4",
-    "medium-zoom": "^1.1.0",
+    "medium-zoom": "^1.1.2",
     "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1"
   },
