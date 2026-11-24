@@ -80,14 +80,13 @@
 	{{ $jsAppearance := resources.Get "js/appearance.js" | resources.ExecuteAsTemplate "js/appearance.js" . | resources.Minify }}
   <script>{{ $jsAppearance.Content | safeJS }}</script>
 
-	{{/* Inlined since deferring causes reflow issues. It is possible that a more sophisticated defer would work. */}}
-	{{ if not $disableImageZoom }}
-		{{ $zoomJS := resources.Get "lib/zoom/zoom.min.umd.js" | resources.Minify }}
-    <script>{{ $zoomJS.Content | safeJS }}</script>
-	{{ end }}
-
 	{{/* JS deferred */}}
 	{{ $jsResources := slice }}
+	{{/* medium-zoom must be defined before the zoom.js call */}}
+	{{ if not $disableImageZoom }}
+		{{ $jsResources = $jsResources | append (resources.Get "lib/zoom/zoom.min.umd.js") }}
+		{{ $jsResources = $jsResources | append (resources.Get "js/zoom.js") }}
+	{{ end }}
 	{{ $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) }}
 	{{ if $showScrollToTop }}
 		{{ $jsResources = $jsResources | append (resources.Get "js/scroll-to-top.js") }}
