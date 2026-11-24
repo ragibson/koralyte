@@ -51,6 +51,11 @@ lite-youtube > iframe {
     border: 0;
 }
 
+/* Keep the prepared player under the poster until the user activates it. */
+lite-youtube:not(.lyt-activated) > iframe {
+    visibility: hidden;
+}
+
 /* play button */
 lite-youtube > .lyt-playbtn {
     display: block;
@@ -82,6 +87,9 @@ lite-youtube.lyt-activated::before,
 lite-youtube.lyt-activated > .lyt-playbtn {
     opacity: 0;
     pointer-events: none;
+    display: none;
+    transition: opacity 0.2s cubic-bezier(0, 0, 0.2, 1), display 0.2s;
+    transition-behavior: allow-discrete;
 }
 
 .lyt-visually-hidden {
