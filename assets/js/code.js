@@ -34,12 +34,7 @@ async function copyCodeToClipboard(button, highlightWrapper) {
   }
 
   try {
-    result = await navigator.permissions.query({ name: "clipboard-write" });
-    if (result.state == "granted" || result.state == "prompt") {
-      await navigator.clipboard.writeText(codeToCopy);
-    } else {
-      fallback(codeToCopy, highlightWrapper);
-    }
+    await navigator.clipboard.writeText(codeToCopy);
   } catch (_) {
     fallback(codeToCopy, highlightWrapper);
   } finally {
