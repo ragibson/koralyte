@@ -170,6 +170,14 @@ function buildIndex() {
   });
 }
 
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function executeQuery(term) {
   if (!indexed) {
     buildIndex();
@@ -181,20 +189,17 @@ function executeQuery(term) {
   let resultsHTML = "";
 
   if (results.length > 0) {
-    results.forEach(function (value, key) {
-      var html = value.item.summary;
-      var div = document.createElement("div");
-      div.innerHTML = html;
-      value.item.summary = div.textContent || div.innerText || "";
-      var title = value.item.externalUrl
-        ? value.item.title +
+    results.forEach(function ({ item }) {
+      var externalUrl = item.externalUrl ? escapeHTML(item.externalUrl) : "";
+      var title = externalUrl
+        ? escapeHTML(item.title) +
           '<span class="text-xs ml-2 align-center cursor-default text-neutral-400 dark:text-neutral-500">' +
-          value.item.externalUrl +
+          externalUrl +
           "</span>"
-        : value.item.title;
-      var linkconfig = value.item.externalUrl
-        ? 'target="_blank" rel="noopener" href="' + value.item.externalUrl + '"'
-        : 'href="' + value.item.permalink + '"';
+        : escapeHTML(item.title);
+      var linkconfig = externalUrl
+        ? 'target="_blank" rel="noopener" href="' + externalUrl + '"'
+        : 'href="' + escapeHTML(item.permalink) + '"';
       resultsHTML =
         resultsHTML +
         `<li class="mb-2">
@@ -204,8 +209,8 @@ function executeQuery(term) {
               <div class="-mb-1 text-lg font-bold">
                 ${title}
               </div>
-              <div class="text-sm text-neutral-500 dark:text-neutral-400">${value.item.section}<span class="px-2 text-primary-500">&middot;</span>${value.item.date ? value.item.date : ""}</span></div>
-              <div class="text-sm italic">${value.item.summary}</div>
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">${escapeHTML(item.section)}<span class="px-2 text-primary-500">&middot;</span>${escapeHTML(item.date || "")}</div>
+              <div class="text-sm italic">${escapeHTML(item.summary || "")}</div>
             </div>
             <div class="ml-2 ltr:block rtl:hidden text-neutral-500">&rarr;</div>
             <div class="mr-2 ltr:hidden rtl:block text-neutral-500">&larr;</div>
