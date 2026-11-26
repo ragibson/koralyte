@@ -1,7 +1,7 @@
 {{- $index := slice -}}
 {{ $pages := site.Pages }}
 {{ range site.Home.Translations }}
-{{ $pages = $pages | lang.Merge site.Pages }}
+{{ $pages = $pages | lang.Merge .Site.Pages }}
 {{ end }}
 {{- range $pages -}}
   {{- if not .Params.excludeFromSearch -}}
