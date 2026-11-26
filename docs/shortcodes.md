@@ -41,8 +41,12 @@ $$
 
 A lightweight YouTube embed that is significantly faster than the official `<iframe>`.
 
+- `id`: YouTube video ID
+- `title`: Optional play button label (defaults to "Play video")
+- `params`: Optional YouTube player query parameters (e.g., "start=10").
+
 ```hugo
-{{< youtubeLite id="abcdefghijk" >}}
+{{< youtubeLite id="abcdefghijk" title="Watch the demo" params="start=10" >}}
 ```
 
 ## details
