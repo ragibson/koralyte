@@ -1,7 +1,22 @@
 const sitePreference = document.documentElement.getAttribute(
   "data-default-appearance",
 );
-const userPreference = localStorage.getItem("appearance");
+let userPreference = null;
+try {
+  userPreference = localStorage.getItem("appearance");
+} catch {} // default appearance
+
+function saveAppearance(appearance) {
+  try {
+    localStorage.setItem("appearance", appearance);
+  } catch {} // switch appearance anyway
+}
+
+function clearAppearance() {
+  try {
+    localStorage.removeItem("appearance");
+  } catch {} // can't clear it anyway
+}
 
 if (
   (sitePreference === "dark" && userPreference === null) ||
@@ -56,26 +71,26 @@ window.addEventListener("DOMContentLoaded", (event) => {
     switcher.addEventListener("click", () => {
       toggleDark();
       var targetAppearance = getTargetAppearance();
-      localStorage.setItem("appearance", targetAppearance);
+      saveAppearance(targetAppearance);
       updateMeta();
       updateTooltip(targetAppearance);
     });
     switcher.addEventListener("contextmenu", (event) => {
       event.preventDefault();
-      localStorage.removeItem("appearance");
+      clearAppearance();
     });
   }
   if (switcherMobile) {
     switcherMobile.addEventListener("click", () => {
       toggleDark();
       var targetAppearance = getTargetAppearance();
-      localStorage.setItem("appearance", targetAppearance);
+      saveAppearance(targetAppearance);
       updateMeta();
       updateTooltip(targetAppearance);
     });
     switcherMobile.addEventListener("contextmenu", (event) => {
       event.preventDefault();
-      localStorage.removeItem("appearance");
+      clearAppearance();
     });
   }
 });
