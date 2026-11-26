@@ -163,12 +163,14 @@ button,
   @apply relative z-0;
 }
 
-.highlight-wrapper:hover > .copy-button {
-  @apply visible;
+.highlight-wrapper:hover > .copy-button,
+.highlight-wrapper:focus-within > .copy-button,
+.copy-button:focus {
+  @apply opacity-100;
 }
 
 .copy-button {
-  @apply invisible absolute top-0 right-0 z-10 w-20 cursor-pointer truncate overflow-hidden rounded-tr-md rounded-bl-md bg-neutral-200 py-1 font-mono text-sm whitespace-nowrap text-neutral-700 opacity-90 dark:bg-neutral-600 dark:text-neutral-200;
+  @apply absolute top-0 right-0 z-10 w-20 cursor-pointer truncate overflow-hidden rounded-tr-md rounded-bl-md bg-neutral-200 py-1 font-mono text-sm whitespace-nowrap text-neutral-700 opacity-0 dark:bg-neutral-600 dark:text-neutral-200;
 }
 
 .copy-button:hover,
