@@ -27,7 +27,7 @@
 		{{ if site.Params.footer.showCopyright | default true -}}
 			<copyright>{{ with replace site.Params.copyright "{ year }" now.Year }}{{ . }}{{ else }}© {{ now.Format "2006" }} {{ site.Params.Author.name }}{{- end }}</copyright>
 		{{- end }}
-		{{ if not .Date.IsZero }}<lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+		{{ with $pages.ByLastmod.Reverse }}<lastBuildDate>{{ (index . 0).Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
 		{{- with .OutputFormats.Get "RSS" -}}
 			{{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
 		{{- end -}}
