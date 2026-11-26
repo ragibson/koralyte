@@ -19,7 +19,7 @@
 				{{ i18n "nav.skip_to_main" }}
 			</a>
 		</div>
-		{{ partialCached "header/basic.html" . "header" }}
+		{{ partialCached "header/basic.html" . "header" site.Language.Lang }}
 		<div class="relative flex flex-col grow">
 			<main id="main-content" class="grow">
 				{{ block "main" . }}{{ end }}
@@ -27,9 +27,9 @@
 					{{- partialCached "scroll-to-top.html" . "scroll-to-top" -}}
 				{{ end }}
 			</main>
-			{{- partialCached "footer.html" . "footer" -}}
+			{{- partialCached "footer.html" . "footer" site.Language.Lang -}}
 			{{ if site.Params.enableSearch | default false }}
-				{{- partialCached "search.html" . "search" -}}
+				{{- partialCached "search.html" . "search" site.Language.Lang -}}
 			{{ end }}
 		</div>
 	</body>
