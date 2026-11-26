@@ -1,5 +1,5 @@
 {{- with .Get "id" -}}
-	<lite-youtube videoid="{{ . }}" playlabel="{{ $.Get "title" | default "Play video" }}"{{ with $.Get "params" }} params="{{ . }}"{{ end }}></lite-youtube>
+	<lite-youtube videoid="{{ . }}" playlabel="{{ $.Get "label" | default "Play video" }}"{{ with $.Get "params" }} params="{{ . }}"{{ end }}></lite-youtube>
 {{- else -}}
 	{{- errorf "youtubeLite: id required (%s)" $.Position -}}
 {{- end -}}
