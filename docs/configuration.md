@@ -117,8 +117,8 @@ name = "Your Name"
 headline = "A short tagline"   # optional
 image = "img/author.jpg"       # optional, relative to assets/ or a URL
 links = [
-    { github = "https://github.com/yourname" },
-    { email = "mailto:you@example.com" },
+    { github = "https://github.com/..." },
+    { envelope = "mailto:...@..." },
     # and so on
 ]
 ```

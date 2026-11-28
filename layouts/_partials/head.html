@@ -47,7 +47,7 @@
 	{{ with site.Params.Author.links }}
 		{{ range $links := . }}
 			{{ range $name, $url := $links }}
-				{{ if and (ne $name "email") (not (strings.HasPrefix $url "mailto:")) }}
+				{{ if and (ne $name "email") (ne $name "envelope") (not (strings.HasPrefix $url "mailto:")) }}
 					<link href="{{ $url }}" rel="me">
 				{{ end }}
 			{{ end }}
