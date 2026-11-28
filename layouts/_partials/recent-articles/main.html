@@ -1,17 +1,10 @@
-{{ $recentArticles := 5 }}
-{{ $showMoreLinkDest := "/posts/" }}
+{{ $showMoreLinkDest := site.Params.homepage.showMoreLinkDest | default "/posts/" }}
 {{ if site.Params.homepage.showRecent | default false }}
-	{{ if index site.Params.homepage "showRecentItems" }}
-		{{ $recentArticles = site.Params.homepage.showRecentItems }}
-	{{ end }}
 	<h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
 
 	{{ partial "recent-articles/cardview.html" . }}
 
 	{{ if site.Params.homepage.showMoreLink | default false }}
-		{{ if index site.Params.homepage "showmorelinkdest" }}
-			{{ $showMoreLinkDest = site.Params.homepage.showMoreLinkDest }}
-		{{ end }}
 		<div class="mt-10 flex justify-center">
 			<a href="{{ $showMoreLinkDest | relLangURL }}">
 				<button
