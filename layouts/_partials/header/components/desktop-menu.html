@@ -5,7 +5,7 @@
 		{{ end }}
 	{{ end }}
 
-	{{ if site.Params.enableSearch | default false }}
+	{{ if site.Params.enableSearch }}
 		<button
 			id="search-button"
 			aria-label="Search"
@@ -15,7 +15,7 @@
 		</button>
 	{{ end }}
 
-	{{ if site.Params.showAppearanceSwitcher | default false }}
+	{{ if site.Params.showAppearanceSwitcher }}
 		<div class="flex items-center">
 			<button
 				id="appearance-switcher"

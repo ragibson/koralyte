@@ -1,5 +1,5 @@
 <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
-	{{ if not (site.Params.disableTextInHeader | default false) }}
+	{{ if not site.Params.disableTextInHeader }}
 		<a href="{{ "" | relLangURL }}" class="text-base font-medium truncate min-w-0 shrink">
 			{{ site.Title | markdownify }}
 		</a>

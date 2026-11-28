@@ -1,4 +1,4 @@
-{{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
+{{ $disableImageOptimization := site.Params.disableImageOptimization }}
 <div class="flex author">
 	{{ with site.Params.Author.image }}
 		{{ $authorImage := "" }}

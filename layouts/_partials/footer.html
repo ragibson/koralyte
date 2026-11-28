@@ -1,6 +1,6 @@
 <footer id="site-footer" class="py-10 print:hidden">
 	{{/* Footer menu */}}
-	{{ $showMenu := partial "functions/param.html" (dict "params" site.Params.footer "key" "showMenu" "default" true) }}
+	{{ $showMenu := partial "functions/param.html" (dict "params" site.Params.footer "key" "showMenu") }}
 	{{ if $showMenu }}
 		{{ if site.Menus.footer }}
 			{{ $onlyIcon := true }}
@@ -36,7 +36,7 @@
 	{{ end }}
 	<div class="flex items-center justify-between">
 		{{/* Copyright */}}
-		{{ $showCopyright := partial "functions/param.html" (dict "params" site.Params.footer "key" "showCopyright" "default" true) }}
+		{{ $showCopyright := partial "functions/param.html" (dict "params" site.Params.footer "key" "showCopyright") }}
 		{{ if $showCopyright }}
 			<p class="text-sm text-neutral-500 dark:text-neutral-400">
 				{{- with replace site.Params.copyright "{ year }" now.Year }}
@@ -50,7 +50,7 @@
 		{{ end }}
 
 		{{/* Theme attribution */}}
-		{{ $showThemeAttribution := partial "functions/param.html" (dict "params" site.Params.footer "key" "showThemeAttribution" "default" true) }}
+		{{ $showThemeAttribution := partial "functions/param.html" (dict "params" site.Params.footer "key" "showThemeAttribution") }}
 		{{ if $showThemeAttribution }}
 			<p class="text-xs text-neutral-500 dark:text-neutral-400">
 				{{ $hugo := printf `<a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"

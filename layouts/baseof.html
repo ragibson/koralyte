@@ -1,12 +1,12 @@
-{{- $autoSwitchAppearance := partial "functions/param.html" (dict "params" site.Params "key" "autoSwitchAppearance" "default" true) -}}
-{{- $enableStyledScrollbar := partial "functions/param.html" (dict "params" site.Params "key" "enableStyledScrollbar" "default" true) -}}
-{{- $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) -}}
+{{- $autoSwitchAppearance := partial "functions/param.html" (dict "params" site.Params "key" "autoSwitchAppearance") -}}
+{{- $enableStyledScrollbar := partial "functions/param.html" (dict "params" site.Params "key" "enableStyledScrollbar") -}}
+{{- $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop") -}}
 <!doctype html>
 <html
 	lang="{{ site.Language.Locale | default `en` }}"
 	dir="ltr"
 	class="scroll-smooth"
-	data-default-appearance="{{ site.Params.defaultAppearance | default `light` }}"
+	data-default-appearance="{{ site.Params.defaultAppearance }}"
 	data-auto-appearance="{{ $autoSwitchAppearance }}">
 	{{- partial "head.html" . -}}
 
@@ -28,7 +28,7 @@
 				{{ end }}
 			</main>
 			{{- partialCached "footer.html" . "footer" site.Language.Lang -}}
-			{{ if site.Params.enableSearch | default false }}
+			{{ if site.Params.enableSearch }}
 				{{- partialCached "search.html" . "search" site.Language.Lang -}}
 			{{ end }}
 		</div>

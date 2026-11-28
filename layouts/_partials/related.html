@@ -1,6 +1,6 @@
-{{ $showRelatedContent := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showRelatedContent" "default" false) }}
+{{ $showRelatedContent := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showRelatedContent") }}
 {{ if $showRelatedContent }}
-	{{ $limit := site.Params.article.relatedContentLimit | default 3 }}
+	{{ $limit := site.Params.article.relatedContentLimit }}
 	{{ $related := site.RegularPages.Related . | first $limit }}
 	{{ with $related }}
 		<h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "article.related_articles" | emojify }}</h2>

@@ -1,4 +1,4 @@
-{{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
+{{ $disableImageOptimization := site.Params.disableImageOptimization }}
 {{ if .Get "default" }}
 	{{ partial "hugo-embedded/shortcodes/figure-default.html" . }}
 {{ else }}

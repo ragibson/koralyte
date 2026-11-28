@@ -57,7 +57,7 @@
 	{{/* Social */}}
 	{{ template "_internal/opengraph.html" . }}
 	{{ template "_internal/twitter_cards.html" . }}
-	{{ $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+	{{ $alg := site.Params.fingerprintAlgorithm }}
 
 	{{/* CSS */}}
 	{{ $cssResources := slice }}
@@ -65,7 +65,7 @@
 	{{ with resources.Get "css/custom.css" }}
 		{{ $cssResources = $cssResources | append . }}
 	{{ end }}
-	{{ $disableImageZoom := site.Params.disableImageZoom | default false }}
+	{{ $disableImageZoom := site.Params.disableImageZoom }}
 	{{ if not $disableImageZoom }}
 		{{ $cssResources = $cssResources | append (resources.Get "lib/zoom/style.css") }}
 	{{ end }}
@@ -87,16 +87,16 @@
 		{{ $jsResources = $jsResources | append (resources.Get "lib/zoom/zoom.min.umd.js") }}
 		{{ $jsResources = $jsResources | append (resources.Get "js/zoom.js") }}
 	{{ end }}
-	{{ $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop" "default" true) }}
+	{{ $showScrollToTop := partial "functions/param.html" (dict "params" site.Params.footer "key" "showScrollToTop") }}
 	{{ if $showScrollToTop }}
 		{{ $jsResources = $jsResources | append (resources.Get "js/scroll-to-top.js") }}
 	{{ end }}
-	{{ if site.Params.enableSearch | default false }}
+	{{ if site.Params.enableSearch }}
 		{{ $fuseRaw := resources.Get "lib/fuse/fuse.min.cjs" }}
 		{{ $fuse := resources.FromString "lib/fuse/fuse.min.js" (replace $fuseRaw.Content "module.exports=" "window.Fuse=") }}
 		{{ $jsResources = $jsResources | append $fuse | append (resources.Get "js/search.js") }}
 	{{ end }}
-	{{ if site.Params.enableCodeCopy | default false }}
+	{{ if site.Params.enableCodeCopy }}
 		{{ $jsResources = $jsResources | append (resources.Get "js/code.js") }}
 	{{ end }}
 

@@ -5,7 +5,7 @@
 			href="{{ .Page.RelPermalink }}"
 		>{{ .Page.Title }}</a
 		>
-		{{ $showTermCount := partial "functions/param.html" (dict "params" site.Params.taxonomy "key" "showTermCount" "default" true) }}
+		{{ $showTermCount := partial "functions/param.html" (dict "params" site.Params.taxonomy "key" "showTermCount") }}
 		{{ if $showTermCount }}
 			<span class="px-2 text-base text-primary-500">&middot;</span>
 			<span class="text-base text-neutral-400">

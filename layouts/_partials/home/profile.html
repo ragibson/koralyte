@@ -1,4 +1,4 @@
-{{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
+{{ $disableImageOptimization := site.Params.disableImageOptimization }}
 <article
 	class="{{ if not site.Params.homepage.showRecent }}
 	h-full

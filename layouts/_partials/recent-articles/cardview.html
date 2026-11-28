@@ -1,5 +1,5 @@
-{{ $recentArticles := site.Params.homepage.showRecentItems | default 5 }}
-{{ $sections := site.Params.mainSections | default (slice "posts") }}
+{{ $recentArticles := site.Params.homepage.showRecentItems }}
+{{ $sections := site.Params.mainSections }}
 
 <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
 	{{ range first $recentArticles (where site.RegularPages "Type" "in" $sections) }}

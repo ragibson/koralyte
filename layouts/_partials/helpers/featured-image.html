@@ -6,7 +6,7 @@
 {{ if reflect.IsMap . }}
 	{{ $page = .page }}
 {{ end }}
-{{ $disableImageOptimization := site.Params.disableImageOptimization | default false }}
+{{ $disableImageOptimization := site.Params.disableImageOptimization }}
 {{ $featuredURL := "" }}
 
 {{ if not $page.Params.hideFeatureImage }}

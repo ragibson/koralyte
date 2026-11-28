@@ -1,14 +1,14 @@
 {{/* youtubeLite */}}
 {{ if .Page.HasShortcode "youtubeLite" }}
 	{{ $youtubeLiteCSS := resources.Get "lib/lite-youtube-embed/lite-yt-embed.css" }}
-	{{ $youtubeLiteCSS = $youtubeLiteCSS | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+	{{ $youtubeLiteCSS = $youtubeLiteCSS | resources.Fingerprint site.Params.fingerprintAlgorithm }}
 	<link
 		type="text/css"
 		rel="stylesheet"
 		href="{{ $youtubeLiteCSS.RelPermalink }}"
 		integrity="{{ $youtubeLiteCSS.Data.Integrity }}">
 	{{ $youtubeLiteLib := resources.Get "lib/lite-youtube-embed/lite-yt-embed.js" }}
-	{{ $youtubeLiteLib = $youtubeLiteLib | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+	{{ $youtubeLiteLib = $youtubeLiteLib | resources.Fingerprint site.Params.fingerprintAlgorithm }}
   <script
 		type="text/javascript"
 		src="{{ $youtubeLiteLib.RelPermalink }}"
@@ -18,7 +18,7 @@
 {{/* Katex */}}
 {{ if .Page.HasShortcode "katex" }}
 	{{ $katexCSS := resources.Get "lib/katex/katex.min.css" }}
-	{{ $katexCSS := $katexCSS | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+	{{ $katexCSS := $katexCSS | resources.Fingerprint site.Params.fingerprintAlgorithm }}
 	<link
 		type="text/css"
 		rel="stylesheet"
@@ -26,7 +26,7 @@
 		integrity="{{ $katexCSS.Data.Integrity }}">
 	{{ $katexLib := resources.Get "lib/katex/katex.min.js" }}
 	{{ $katexRenderLib := resources.Get "lib/katex/auto-render.min.js" }}
-	{{ $katexJS := slice $katexLib $katexRenderLib | resources.Concat "js/katex.bundle.js" | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+	{{ $katexJS := slice $katexLib $katexRenderLib | resources.Concat "js/katex.bundle.js" | resources.Fingerprint site.Params.fingerprintAlgorithm }}
   <script
 		defer
 		type="text/javascript"

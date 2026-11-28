@@ -27,7 +27,7 @@
   or site param article.externalLinkForceNewTab
   and the link starts with http: or https:
 */}}
-{{- $forceNewTab := partial "functions/page-param.html" (dict "page" .Page "section" "article" "key" "externalLinkForceNewTab" "default" true) -}}
+{{- $forceNewTab := partial "functions/page-param.html" (dict "page" .Page "section" "article" "key" "externalLinkForceNewTab") -}}
 {{- $isExternal := or (strings.HasPrefix .Destination "http:") (strings.HasPrefix .Destination "https:") -}}
 {{- $newTab := and $forceNewTab $isExternal -}}
 

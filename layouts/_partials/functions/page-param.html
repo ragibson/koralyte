@@ -1,2 +1,2 @@
-{{- $site := partial "functions/param.html" (dict "params" (index site.Params .section) "key" .key "default" .default) -}}
+{{- $site := partial "functions/param.html" (dict "params" (index site.Params .section) "key" .key) -}}
 {{- return partial "functions/param.html" (dict "params" .page.Params "key" .key "default" $site) -}}

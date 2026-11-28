@@ -1,10 +1,10 @@
-{{ $showMoreLinkDest := site.Params.homepage.showMoreLinkDest | default "/posts/" }}
-{{ if site.Params.homepage.showRecent | default false }}
+{{ $showMoreLinkDest := site.Params.homepage.showMoreLinkDest }}
+{{ if site.Params.homepage.showRecent }}
 	<h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" | emojify }}</h2>
 
 	{{ partial "recent-articles/cardview.html" . }}
 
-	{{ if site.Params.homepage.showMoreLink | default false }}
+	{{ if site.Params.homepage.showMoreLink }}
 		<div class="mt-10 flex justify-center">
 			<a href="{{ $showMoreLinkDest | relLangURL }}">
 				<button

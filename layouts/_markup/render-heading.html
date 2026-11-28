@@ -9,7 +9,7 @@
 {{ end }}
 <h{{ .Level }} class="relative group">{{ .Text | safeHTML }}
 	<span id="{{ $anchor }}" class="anchor"></span>
-	{{ $showHeadingAnchors := partial "functions/page-param.html" (dict "page" .Page "section" "article" "key" "showHeadingAnchors" "default" true) }}
+	{{ $showHeadingAnchors := partial "functions/page-param.html" (dict "page" .Page "section" "article" "key" "showHeadingAnchors") }}
 	{{ if $showHeadingAnchors }}
 		<span
 			class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">

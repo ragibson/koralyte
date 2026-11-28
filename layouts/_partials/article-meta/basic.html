@@ -9,11 +9,11 @@
 {{ with $page }}
 	<div class="flex flex-row flex-wrap items-center">
 		{{ $parts := slice }}
-		{{ $showDate := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDate" "default" true) }}
+		{{ $showDate := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDate") }}
 		{{ if $showDate }}
 			{{ $parts = $parts | append (partial "meta/date.html" .Date) }}
 		{{ end }}
-		{{ $showDateUpdated := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDateUpdated" "default" false) }}
+		{{ $showDateUpdated := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDateUpdated") }}
 		{{ if and $showDateUpdated (ne (partial
 			"functions/date.html" .Date
 		)
@@ -23,7 +23,7 @@
 		}}
 			{{ $parts = $parts | append (partial "meta/date-updated.html" .Lastmod) }}
 		{{ end }}
-		{{ $showReadingTime := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showReadingTime" "default" true) }}
+		{{ $showReadingTime := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showReadingTime") }}
 		{{ if and $showReadingTime (ne .ReadingTime 0) }}
 			{{ $parts = $parts | append (partial "meta/reading-time.html" .) }}
 		{{ end }}
@@ -35,7 +35,7 @@
 		{{ end }}
 	</div>
 
-	{{ $showTaxonomies := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showTaxonomies" "default" false) }}
+	{{ $showTaxonomies := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showTaxonomies") }}
 	{{ if $showTaxonomies }}
 		<div class="flex flex-row flex-wrap items-center">
 			{{ range .GetTerms "tags" }}
