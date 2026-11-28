@@ -2,7 +2,7 @@
 <div class="flex author">
 	{{ with site.Params.Author.image }}
 		{{ $authorImage := "" }}
-		{{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+		{{ if partial "functions/is-external.html" . }}
 			{{ $authorImage = resources.GetRemote . }}
 		{{ else }}
 			{{ $authorImage = resources.Get . }}

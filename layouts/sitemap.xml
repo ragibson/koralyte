@@ -2,7 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	{{ range .Data.Pages }}
 		{{ if and (not .Sitemap.Disable) (not (in site.Params.sitemap.excludedKinds .Kind)) }}
-			{{ if and (.Param "xml" | default true) (or (not .Params.externalUrl) (and (.Params.externalUrl) (and (not (hasPrefix .Params.externalUrl "http://")) (not (hasPrefix .Params.externalUrl "https://"))))) (not .Params.excludeFromSearch) }}
+			{{ $isExternal := partial "functions/is-external.html" (.Params.externalUrl | default "") }}
+			{{ if and (.Param "xml" | default true) (not $isExternal) (not .Params.excludeFromSearch) }}
 				{{- if .Permalink -}}{{ $link := .Permalink }}{{ if .Params.externalUrl }}{{ $link = printf "%s%s" site.BaseURL (substr .Params.externalUrl 1) }}{{ end }}
 					<url>
 						<loc>{{ $link }}</loc>

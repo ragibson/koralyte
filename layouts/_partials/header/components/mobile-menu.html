@@ -73,7 +73,7 @@
 			<a
 				href="{{ .URL }}"
 				{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-				{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+				{{ if partial "functions/is-external.html" .URL }}
 					target="_blank"
 				{{ end }}
 				class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
@@ -112,7 +112,7 @@
 					<a
 						href="{{ .URL }}"
 						{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-						{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+						{{ if partial "functions/is-external.html" .URL }}
 							target="_blank"
 						{{ end }}
 						class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">

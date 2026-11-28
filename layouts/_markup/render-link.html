@@ -28,7 +28,7 @@
   and the link starts with http: or https:
 */}}
 {{- $forceNewTab := partial "functions/page-param.html" (dict "page" .Page "section" "article" "key" "externalLinkForceNewTab") -}}
-{{- $isExternal := or (strings.HasPrefix .Destination "http:") (strings.HasPrefix .Destination "https:") -}}
+{{- $isExternal := partial "functions/is-external.html" .Destination -}}
 {{- $newTab := and $forceNewTab $isExternal -}}
 
 <a href="{{ $href }}" {{ with .Title }}title="{{ . }}"{{ end }}

@@ -42,7 +42,7 @@
 			<a
 				{{ if .URL }}
 					href="{{ .URL }}"
-					{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+					{{ if partial "functions/is-external.html" .URL }}
 						target="_blank"
 					{{ end }}
 				{{ else }}
@@ -74,7 +74,7 @@
 				{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 				<a
 					href="{{ .URL }}"
-					{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+					{{ if partial "functions/is-external.html" .URL }}
 						target="_blank"
 					{{ end }}
 					{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
@@ -98,7 +98,7 @@
 	{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 	<a
 		href="{{ .URL }}"
-		{{ if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }}
+		{{ if partial "functions/is-external.html" .URL }}
 			target="_blank"
 		{{ end }}
 		class="flex items-center bf-icon-color-hover"
