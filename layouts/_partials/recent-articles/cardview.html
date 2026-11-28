@@ -3,6 +3,6 @@
 
 <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
 	{{ range first $recentArticles (where site.RegularPages "Type" "in" $sections) }}
-		{{ partial "article-link/card.html" . }}
+		{{ partial "article-link/card.html" (dict "page" . "lazy" false) }}
 	{{ end }}
 </section>

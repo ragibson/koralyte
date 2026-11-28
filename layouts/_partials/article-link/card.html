@@ -1,21 +1,23 @@
 {{ $thumbnailAspectRatio := site.Params.thumbnailAspectRatio | default "1.5" }}
 {{ $thumbnailAspectRatio = replaceRE "[^0-9.]" "" $thumbnailAspectRatio }}
 {{ if eq $thumbnailAspectRatio "" }}{{ $thumbnailAspectRatio = "1.5" }}{{ end }}
-{{ $featuredURL := partial "helpers/featured-image.html" . }}
+{{ $page := .page }}
+{{ $lazy := .lazy }}
+{{ $featuredURL := partial "helpers/featured-image.html" $page }}
 
 <article
-	class="article-link--card relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+	class="{{ if $lazy }}article-link--related{{ else }}article-link--card{{ end }} relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
 	{{ with $featuredURL }}
 		<div class="flex-none relative overflow-hidden thumbnail_card" style="--thumbnail-aspect-ratio: {{ $thumbnailAspectRatio }}">
 			<img
 				src="{{ . }}"
 				role="presentation"
 				decoding="async"
-				fetchpriority="high"
+				{{ if $lazy }}loading="lazy" fetchpriority="low"{{ else }}fetchpriority="high"{{ end }}
 				class="nozoom not-prose absolute inset-0 w-full h-full object-cover">
 		</div>
 	{{ end }}
-	{{ if and .Draft site.Params.article.showDraftLabel }}
+	{{ if and $page.Draft site.Params.article.showDraftLabel }}
 		<span class="absolute top-0 right-0 m-2">
 			{{ partial "badge.html" (i18n "article.draft" | emojify) }}
 		</span>
@@ -24,15 +26,15 @@
 		<header>
 			{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
 			<a
-				{{ with .Params.externalUrl }}
+				{{ with $page.Params.externalUrl }}
 					href="{{ . }}" target="_blank" rel="external"
 				{{ else }}
-					href="{{ .RelPermalink }}"
+					href="{{ $page.RelPermalink }}"
 				{{ end }}
 				class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
 				<h2>
-					{{ .Title | emojify }}
-					{{ if .Params.externalUrl }}
+					{{ $page.Title | emojify }}
+					{{ if $page.Params.externalUrl }}
 						<span class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500">
 							<span class="rtl:hidden">&#8599;</span>
 							<span class="ltr:hidden">&#8598;</span>
@@ -43,11 +45,11 @@
 			{{/* gotmplfmt-ignore-end */}}
 		</header>
 		<div class="text-sm text-neutral-500 dark:text-neutral-400">
-			{{ partial "article-meta/basic.html" . }}
+			{{ partial "article-meta/basic.html" $page }}
 		</div>
-		{{ if partial "functions/param.html" (dict "params" .Params "key" "showSummary" "default" site.Params.list.showSummary) }}
+		{{ if partial "functions/param.html" (dict "params" $page.Params "key" "showSummary" "default" site.Params.list.showSummary) }}
 			<div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
-				{{ .Summary | plainify }}
+				{{ $page.Summary | plainify }}
 			</div>
 		{{ end }}
 	</div>
