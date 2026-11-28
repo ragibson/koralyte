@@ -1,6 +1,4 @@
 var fuse;
-var showButton = document.getElementById("search-button");
-var showButtonMobile = document.getElementById("search-button-mobile");
 var hideButton = document.getElementById("close-search-button");
 var wrapper = document.getElementById("search-wrapper");
 var modal = document.getElementById("search-modal");
@@ -14,8 +12,9 @@ var hasResults = false;
 var previouslyFocused = null;
 
 // Listen for events
-showButton ? showButton.addEventListener("click", displaySearch) : null;
-showButtonMobile ? showButtonMobile.addEventListener("click", displaySearch) : null;
+document.querySelectorAll("[data-search-toggle]").forEach((button) => {
+  button.addEventListener("click", displaySearch);
+});
 hideButton.addEventListener("click", hideSearch);
 wrapper.addEventListener("click", hideSearch);
 modal.addEventListener("click", function (event) {

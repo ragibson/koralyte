@@ -33,9 +33,8 @@ if (document.documentElement.getAttribute("data-auto-appearance") === "true") {
   });
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-  const switcher = document.getElementById("appearance-switcher");
-  const switcherMobile = document.getElementById("appearance-switcher-mobile");
+window.addEventListener("DOMContentLoaded", () => {
+  const switchers = document.querySelectorAll("[data-appearance-toggle]");
 
   const darkLabel = {{ i18n "footer.dark_appearance" | jsonify }};
   const lightLabel = {{ i18n "footer.light_appearance" | jsonify }};
@@ -44,22 +43,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   const updateTooltip = (targetAppearance) => {
     const label = targetAppearance === "dark" ? lightLabel : darkLabel;
-    if (switcher) {
+    switchers.forEach((switcher) => {
       switcher.setAttribute("aria-label", label);
       switcher.setAttribute("title", label);
-    }
-    if (switcherMobile) {
-      switcherMobile.setAttribute("aria-label", label);
-      switcherMobile.setAttribute("title", label);
-    }
+    });
   };
 
   updateTooltip(getTargetAppearance());
 
-  if (switcher) {
+  switchers.forEach((switcher) => {
     switcher.addEventListener("click", () => {
       toggleDark();
-      var targetAppearance = getTargetAppearance();
+      const targetAppearance = getTargetAppearance();
       saveAppearance(targetAppearance);
       updateMeta();
       updateTooltip(targetAppearance);
@@ -68,20 +63,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       event.preventDefault();
       clearAppearance();
     });
-  }
-  if (switcherMobile) {
-    switcherMobile.addEventListener("click", () => {
-      toggleDark();
-      var targetAppearance = getTargetAppearance();
-      saveAppearance(targetAppearance);
-      updateMeta();
-      updateTooltip(targetAppearance);
-    });
-    switcherMobile.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-      clearAppearance();
-    });
-  }
+  });
 });
 
 var updateMeta = () => {

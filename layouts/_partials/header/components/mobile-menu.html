@@ -1,29 +1,6 @@
 <div class="flex items-center h-14 gap-4">
-	{{ if site.Params.enableSearch }}
-		<button
-			id="search-button-mobile"
-			aria-label="Search"
-			class="flex items-center justify-center bf-icon-color-hover"
-			title="{{ i18n "search.open_button_title" }}">
-			{{ partial "icon.html" "search" }}
-		</button>
-	{{ end }}
-
-	{{ if site.Params.showAppearanceSwitcher }}
-		<button
-			id="appearance-switcher-mobile"
-			type="button"
-			aria-label="{{ i18n "footer.dark_appearance" }}"
-			title="{{ i18n "footer.dark_appearance" }}"
-			class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
-			<div class="dark:hidden">
-				{{ partial "icon.html" "moon" }}
-			</div>
-			<div class="hidden dark:block">
-				{{ partial "icon.html" "sun" }}
-			</div>
-		</button>
-	{{ end }}
+	{{ partial "header/components/search-button.html" "flex items-center justify-center bf-icon-color-hover" }}
+	{{ partial "header/components/appearance-switcher.html" "flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400" }}
 
 	{{ if site.Menus.main }}
 		<input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">

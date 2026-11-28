@@ -1,0 +1,10 @@
+{{ if site.Params.enableSearch }}
+	<button
+		type="button"
+		data-search-toggle
+		aria-label="Search"
+		class="{{ . }}"
+		title="{{ i18n "search.open_button_title" }}">
+		{{ partial "icon.html" "search" }}
+	</button>
+{{ end }}

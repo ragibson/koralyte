@@ -5,33 +5,8 @@
 		{{ end }}
 	{{ end }}
 
-	{{ if site.Params.enableSearch }}
-		<button
-			id="search-button"
-			aria-label="Search"
-			class="text-base bf-icon-color-hover"
-			title="{{ i18n "search.open_button_title" }}">
-			{{ partial "icon.html" "search" }}
-		</button>
-	{{ end }}
-
-	{{ if site.Params.showAppearanceSwitcher }}
-		<div class="flex items-center">
-			<button
-				id="appearance-switcher"
-				aria-label="{{ i18n "footer.dark_appearance" }}"
-				type="button"
-				class="text-base bf-icon-color-hover"
-				title="{{ i18n "footer.dark_appearance" }}">
-				<div class="flex items-center justify-center dark:hidden">
-					{{ partial "icon.html" "moon" }}
-				</div>
-				<div class="items-center justify-center hidden dark:flex">
-					{{ partial "icon.html" "sun" }}
-				</div>
-			</button>
-		</div>
-	{{ end }}
+	{{ partial "header/components/search-button.html" "text-base bf-icon-color-hover" }}
+	{{ partial "header/components/appearance-switcher.html" "text-base bf-icon-color-hover" }}
 </nav>
 
 {{ define "DesktopMenu" }}

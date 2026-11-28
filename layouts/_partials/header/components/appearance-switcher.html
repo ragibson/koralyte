@@ -1,0 +1,15 @@
+{{ if site.Params.showAppearanceSwitcher }}
+	<button
+		type="button"
+		data-appearance-toggle
+		aria-label="{{ i18n "footer.dark_appearance" }}"
+		class="{{ . }}"
+		title="{{ i18n "footer.dark_appearance" }}">
+		<div class="flex items-center justify-center dark:hidden">
+			{{ partial "icon.html" "moon" }}
+		</div>
+		<div class="hidden items-center justify-center dark:flex">
+			{{ partial "icon.html" "sun" }}
+		</div>
+	</button>
+{{ end }}
