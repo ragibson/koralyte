@@ -1,0 +1,20 @@
+{{ $urls := dict }}
+{{ with site.Params.Author.image }}
+	{{ $image := "" }}
+	{{ if partial "functions/is-external.html" . }}
+		{{ $image = resources.GetRemote . }}
+	{{ else }}
+		{{ $image = resources.Get . }}
+	{{ end }}
+	{{ with $image }}
+		{{ $src := . }}
+		{{ $zoom := . }}
+		{{ if not (or site.Params.disableImageOptimization (eq .MediaType.SubType "svg")) }}
+			{{ $src = .Fill $ }}
+			{{ $shortSide := int (math.Min .Width .Height) }}
+			{{ $zoom = .Crop (printf "%dx%d Center" $shortSide $shortSide) }}
+		{{ end }}
+		{{ $urls = dict "src" $src.RelPermalink "zoom" $zoom.RelPermalink }}
+	{{ end }}
+{{ end }}
+{{ return $urls }}

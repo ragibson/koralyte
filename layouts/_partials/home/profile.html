@@ -1,34 +1,18 @@
-{{ $disableImageOptimization := site.Params.disableImageOptimization }}
 <article
 	class="{{ if not site.Params.homepage.showRecent }}
 	h-full
 {{ end }} flex flex-col items-center justify-center text-center">
 	<header class="relative px-1 py-1 flex flex-col items-center mb-3 mt-36">
-		{{ with site.Params.Author.image }}
-			{{ $authorImage := "" }}
-			{{ if partial "functions/is-external.html" . }}
-				{{ $authorImage = resources.GetRemote . }}
-			{{ else }}
-				{{ $authorImage = resources.Get . }}
-			{{ end }}
-			{{ if $authorImage }}
-				{{ $final := $authorImage }}
-				{{ $squareImage := $authorImage }}
-				{{ if not (or $disableImageOptimization (eq $authorImage.MediaType.SubType "svg")) }}
-					{{ $final = $authorImage.Fill (print "288x288 Center q" (site.Params.Author.imagequality | default "96")) }}
-					{{ $shortSide := int (math.Min $authorImage.Width $authorImage.Height) }}
-					{{ $squareImage = $authorImage.Crop (printf "%dx%d Center" $shortSide $shortSide) }}
-				{{ end }}
-				<img
-					class="mb-2 h-36 w-36 rounded-full"
-					width="144"
-					height="144"
-					alt="{{ site.Params.Author.name | default `Author` }}"
-					loading="eager"
-					fetchpriority="high"
-					src="{{ $final.RelPermalink }}"
-					data-zoom-src="{{ $squareImage.RelPermalink }}">
-			{{ end }}
+		{{ with partial "helpers/author-image.html" (print "288x288 Center q" (site.Params.Author.imagequality | default "96")) }}
+			<img
+				class="mb-2 h-36 w-36 rounded-full"
+				width="144"
+				height="144"
+				alt="{{ site.Params.Author.name | default `Author` }}"
+				loading="eager"
+				fetchpriority="high"
+				src="{{ .src }}"
+				data-zoom-src="{{ .zoom }}">
 		{{ end }}
 		<h1 class="text-4xl font-extrabold">
 			{{ site.Params.Author.name | default site.Title }}
