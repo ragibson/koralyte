@@ -9,13 +9,11 @@
 {{ with $page }}
 	<div class="flex flex-row flex-wrap items-center">
 		{{ $parts := slice }}
-		{{ $showDate := partial "functions/param.html" (dict "params" site.Params.article "key" "showDate" "default" true) }}
-		{{ $showDate = partial "functions/param.html" (dict "params" .Params "key" "showDate" "default" $showDate) }}
+		{{ $showDate := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDate" "default" true) }}
 		{{ if $showDate }}
 			{{ $parts = $parts | append (partial "meta/date.html" .Date) }}
 		{{ end }}
-		{{ $showDateUpdated := partial "functions/param.html" (dict "params" site.Params.article "key" "showDateUpdated" "default" false) }}
-		{{ $showDateUpdated = partial "functions/param.html" (dict "params" .Params "key" "showDateUpdated" "default" $showDateUpdated) }}
+		{{ $showDateUpdated := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showDateUpdated" "default" false) }}
 		{{ if and $showDateUpdated (ne (partial
 			"functions/date.html" .Date
 		)
@@ -25,8 +23,7 @@
 		}}
 			{{ $parts = $parts | append (partial "meta/date-updated.html" .Lastmod) }}
 		{{ end }}
-		{{ $showReadingTime := partial "functions/param.html" (dict "params" site.Params.article "key" "showReadingTime" "default" true) }}
-		{{ $showReadingTime = partial "functions/param.html" (dict "params" .Params "key" "showReadingTime" "default" $showReadingTime) }}
+		{{ $showReadingTime := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showReadingTime" "default" true) }}
 		{{ if and $showReadingTime (ne .ReadingTime 0) }}
 			{{ $parts = $parts | append (partial "meta/reading-time.html" .) }}
 		{{ end }}
@@ -38,8 +35,7 @@
 		{{ end }}
 	</div>
 
-	{{ $showTaxonomies := partial "functions/param.html" (dict "params" site.Params.article "key" "showTaxonomies" "default" false) }}
-	{{ $showTaxonomies = partial "functions/param.html" (dict "params" .Params "key" "showTaxonomies" "default" $showTaxonomies) }}
+	{{ $showTaxonomies := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showTaxonomies" "default" false) }}
 	{{ if $showTaxonomies }}
 		<div class="flex flex-row flex-wrap items-center">
 			{{ range .GetTerms "tags" }}

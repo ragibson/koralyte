@@ -1,5 +1,4 @@
-{{ $showRelatedContent := partial "functions/param.html" (dict "params" site.Params.article "key" "showRelatedContent" "default" false) }}
-{{ $showRelatedContent = partial "functions/param.html" (dict "params" .Params "key" "showRelatedContent" "default" $showRelatedContent) }}
+{{ $showRelatedContent := partial "functions/page-param.html" (dict "page" . "section" "article" "key" "showRelatedContent" "default" false) }}
 {{ if $showRelatedContent }}
 	{{ $limit := site.Params.article.relatedContentLimit | default 3 }}
 	{{ $related := site.RegularPages.Related . | first $limit }}
