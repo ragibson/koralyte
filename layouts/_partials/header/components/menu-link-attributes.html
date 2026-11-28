@@ -1,0 +1,9 @@
+{{ define "menu-link-attributes" }}
+{{ if and .focusWithoutURL (not .entry.URL) }}
+	tabindex="0"
+{{ else }}
+	href="{{ .entry.URL }}"
+	{{ if partial "functions/is-external.html" .entry.URL }} target="_blank" {{ end }}
+{{ end }}
+{{ with or .entry.Name .entry.Pre }} aria-label="{{ . }}" {{ end }}
+{{ end }}

@@ -68,15 +68,9 @@
 {{ range site.Menus.main }}
 	{{ $submenuId := printf "fullscreen-submenu-%s" (.Identifier | default .Name | anchorize) }}
 	<div class="px-2">
-		{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
+
 		<div class="flex items-center gap-4">
-			<a
-				href="{{ .URL }}"
-				{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-				{{ if partial "functions/is-external.html" .URL }}
-					target="_blank"
-				{{ end }}
-				class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+			<a class="flex grow items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200" {{ template "menu-link-attributes" (dict "entry" . "focusWithoutURL" false) }}>
 				{{ if .Pre }}
 					<span class="flex items-center justify-center h-8 w-8 text-2xl">
 						{{ partial "icon.html" .Pre }}
@@ -98,7 +92,7 @@
 				</label>
 			{{ end }}
 		</div>
-		{{/* gotmplfmt-ignore-end */}}
+
 
 		{{ if .HasChildren }}
 			<input checked type="checkbox" id="{{ $submenuId }}" autocomplete="off" class="hidden peer/full">
@@ -108,24 +102,18 @@
 				<div class="overflow-hidden">
 					<div class="ms-7 mt-4">
 						{{ range .Children }}
-					{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
-					<a
-						href="{{ .URL }}"
-						{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-						{{ if partial "functions/is-external.html" .URL }}
-							target="_blank"
-						{{ end }}
-						class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
-						{{ if .Pre }}
-							<span class="flex items-center justify-center h-5 w-5">
-								{{ partial "icon.html" .Pre }}
-							</span>
-						{{ end }}
-						<span title="{{ .Title }}" class="text-lg">
-							{{ .Name | markdownify }}
-						</span>
-					</a>
-					{{/* gotmplfmt-ignore-end */}}
+
+							<a class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200" {{ template "menu-link-attributes" (dict "entry" . "focusWithoutURL" false) }}>
+								{{ if .Pre }}
+									<span class="flex items-center justify-center h-5 w-5">
+										{{ partial "icon.html" .Pre }}
+									</span>
+								{{ end }}
+								<span title="{{ .Title }}" class="text-lg">
+									{{ .Name | markdownify }}
+								</span>
+							</a>
+
 						{{ end }}
 					</div>
 				</div>

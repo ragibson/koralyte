@@ -38,21 +38,8 @@
 {{ if .HasChildren }}
 	<div class="nested-menu">
 		<div class="cursor-pointer flex items-center">
-			{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
-			<a
-				{{ if .URL }}
-					href="{{ .URL }}"
-					{{ if partial "functions/is-external.html" .URL }}
-						target="_blank"
-					{{ end }}
-				{{ else }}
-					tabindex="0"
-				{{ end }}
-				{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-				aria-haspopup="true"
-				aria-expanded="false"
-				class="flex items-center text-base font-medium bf-icon-color-hover"
-				title="{{ .Title }}">
+
+			<a class="flex items-center text-base font-medium bf-icon-color-hover" aria-haspopup="true" aria-expanded="false" title="{{ .Title }}" {{ template "menu-link-attributes" (dict "entry" . "focusWithoutURL" true) }}>
 				{{ if .Pre }}
 					<span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
 						{{ partial "icon.html" .Pre }}
@@ -65,45 +52,32 @@
 					{{ partial "icon.html" "chevron-down" }}
 				</span>
 			</a>
-			{{/* gotmplfmt-ignore-end */}}
+
 		</div>
 		<div class="menuhide">
 			<div class="p-5 mt-2 rounded-xl backdrop-blur shadow-2xl bg-neutral/25 dark:bg-neutral-800/25">
 				<div class="flex flex-col gap-3">
 					{{ range .Children }}
-				{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
-				<a
-					href="{{ .URL }}"
-					{{ if partial "functions/is-external.html" .URL }}
-						target="_blank"
-					{{ end }}
-					{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-					class="flex items-center bf-icon-color-hover">
-					{{ if .Pre }}
-						<span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
-							{{ partial "icon.html" .Pre }}
-						</span>
-					{{ end }}
-					<span class="text-sm" title="{{ .Title }}">
-						{{ .Name | markdownify }}
-					</span>
-				</a>
-				{{/* gotmplfmt-ignore-end */}}
+
+						<a class="flex items-center bf-icon-color-hover" {{ template "menu-link-attributes" (dict "entry" . "focusWithoutURL" false) }}>
+							{{ if .Pre }}
+								<span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
+									{{ partial "icon.html" .Pre }}
+								</span>
+							{{ end }}
+							<span class="text-sm" title="{{ .Title }}">
+								{{ .Name | markdownify }}
+							</span>
+						</a>
+
 					{{ end }}
 				</div>
 			</div>
 		</div>
 	</div>
 {{ else }}
-	{{/* gotmplfmt-ignore-start: formatter breaks multi-line <a> tag by closing early. */}}
-	<a
-		href="{{ .URL }}"
-		{{ if partial "functions/is-external.html" .URL }}
-			target="_blank"
-		{{ end }}
-		class="flex items-center bf-icon-color-hover"
-		{{ with or .Name .Pre }}aria-label="{{ . }}"{{ end }}
-		title="{{ .Title }}">
+
+	<a class="flex items-center bf-icon-color-hover" title="{{ .Title }}" {{ template "menu-link-attributes" (dict "entry" . "focusWithoutURL" false) }}>
 		{{ if .Pre }}
 			<span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
 				{{ partial "icon.html" .Pre }}
@@ -115,6 +89,6 @@
 			</span>
 		{{ end }}
 	</a>
-	{{/* gotmplfmt-ignore-end */}}
+
 {{ end }}
 {{ end }}
