@@ -143,7 +143,6 @@ koralyte/
 │   ├── baseof.html        # base template
 │   ├── home.html          # home page kind
 │   ├── index.json         # JSON output for client-side search
-│   ├── list.html          # default list layout
 │   ├── page.html          # single page layout
 │   ├── robots.txt         # robots.txt template
 │   ├── rss.xml            # RSS feed template

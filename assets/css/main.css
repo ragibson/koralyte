@@ -170,7 +170,7 @@ button,
 }
 
 .copy-button {
-  @apply absolute top-0 right-0 z-10 w-20 cursor-pointer truncate overflow-hidden rounded-tr-md rounded-bl-md bg-neutral-200 py-1 font-mono text-sm whitespace-nowrap text-neutral-700 opacity-0 dark:bg-neutral-600 dark:text-neutral-200;
+  @apply absolute top-0 right-0 z-10 w-20 cursor-pointer truncate rounded-tr-md rounded-bl-md bg-neutral-200 py-1 font-mono text-sm text-neutral-700 opacity-0 dark:bg-neutral-600 dark:text-neutral-200;
 }
 
 .copy-button:hover,
@@ -185,12 +185,9 @@ button,
 }
 
 /* Fix long KaTeX equations on mobile (see https://katex.org/docs/issues.html#css-customization) */
-.katex-display {
-  overflow: auto hidden;
-}
-
 /* Fix katex overflow */
 .katex-display {
+  overflow: auto hidden;
   padding: 1em;
   width: calc(100% - 1em);
 }
