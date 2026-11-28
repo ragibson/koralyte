@@ -230,11 +230,6 @@ pre {
   height: auto;
 }
 
-.thumbnail_card_related {
-  aspect-ratio: var(--thumbnail-aspect-ratio, 1.5);
-  height: auto;
-}
-
 .thumbnail {
   width: 300px;
   min-height: 180px;
