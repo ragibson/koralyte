@@ -18,6 +18,18 @@ You can also pass `default=true` to drop back to Hugo's default version of this 
 {{< figure src="image.jpg" nozoom=true >}}
 ```
 
+I've created two helper classes to help with figure sizing, which can be applied via the `class` parameter (for the
+`<img>` element) or the `figureClass` parameter (for the `<figure>` element):
+
+- `max-w-65ch` limits the image to 65 characters wide
+- `center-figure` centers the image
+
+TODO: should these be replaced with Tailwind classes instead? `max-w-[65ch]` and `mx-auto`?
+
+```hugo
+{{< figure src="image.jpg" class="max-w-65ch" figureClass="center-figure" >}}
+```
+
 ## katex
 
 Enables KaTeX math rendering on the page. Place once anywhere in the content and then math rendering is enabled for the
